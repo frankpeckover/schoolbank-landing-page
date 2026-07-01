@@ -1,12 +1,12 @@
 # SchoolBank Landing Page
 
-A small static landing/info page for the SchoolBank concept.
+A small static landing/info page for the SchoolBank rewards and behaviour-management concept.
 
 ## Files
 
 - `index.html` contains the page content and structure.
 - `styles.css` contains all visual styling and responsive layout rules.
-- `assets/school-admin-finance.png` is the generated hero/supporting image used by the page.
+- `assets/school-rewards-hero.png` is the generated hero/supporting image used by the page.
 
 ## Local Preview
 
