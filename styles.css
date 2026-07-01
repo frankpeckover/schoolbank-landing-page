@@ -11,6 +11,7 @@
   --gold: #d9a441;
   --sky: #d8eef0;
   --shadow: 0 24px 70px rgba(24, 37, 43, 0.14);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -33,6 +34,40 @@ body {
   line-height: 1.5;
 }
 
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes count-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(33, 114, 103, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 36px rgba(33, 114, 103, 0.18);
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -50,6 +85,7 @@ a {
   background: rgba(251, 248, 242, 0.92);
   border-bottom: 1px solid rgba(217, 227, 225, 0.85);
   backdrop-filter: blur(18px);
+  animation: fade-up 620ms var(--ease-out) both;
 }
 
 .brand,
@@ -126,10 +162,10 @@ p {
 }
 
 h1 {
-  max-width: 840px;
+  max-width: 760px;
   margin-bottom: 24px;
-  font-size: clamp(3.15rem, 6.2vw, 6.8rem);
-  line-height: 0.95;
+  font-size: clamp(2.8rem, 5.1vw, 5.75rem);
+  line-height: 1;
   letter-spacing: 0;
 }
 
@@ -151,6 +187,34 @@ h3 {
   font-size: clamp(1.08rem, 2vw, 1.28rem);
 }
 
+.hero-content .eyebrow,
+.hero-content h1,
+.hero-copy,
+.hero-actions,
+.hero-proof {
+  animation: fade-up 760ms var(--ease-out) both;
+}
+
+.hero-content .eyebrow {
+  animation-delay: 80ms;
+}
+
+.hero-content h1 {
+  animation-delay: 150ms;
+}
+
+.hero-copy {
+  animation-delay: 220ms;
+}
+
+.hero-actions {
+  animation-delay: 300ms;
+}
+
+.hero-proof {
+  animation-delay: 380ms;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -161,21 +225,20 @@ h3 {
 .hero-proof {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px 16px;
   margin-top: 28px;
 }
 
 .hero-proof span {
   display: inline-flex;
   align-items: center;
-  min-height: 34px;
-  padding: 8px 12px;
-  border: 1px solid rgba(33, 114, 103, 0.18);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.72);
-  color: var(--green-dark);
-  font-size: 0.88rem;
+  min-height: 24px;
+  padding-left: 13px;
+  border-left: 3px solid rgba(33, 114, 103, 0.42);
+  color: var(--muted);
+  font-size: 0.84rem;
   font-weight: 800;
+  line-height: 1.2;
 }
 
 .button {
@@ -186,6 +249,12 @@ h3 {
   border-radius: 8px;
   padding: 13px 20px;
   font-weight: 800;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .button.primary {
@@ -195,6 +264,8 @@ h3 {
 
 .button.primary:hover {
   background: var(--green-dark);
+  box-shadow: 0 16px 34px rgba(20, 88, 79, 0.22);
+  transform: translateY(-2px);
 }
 
 .button.secondary {
@@ -203,9 +274,16 @@ h3 {
   color: var(--green-dark);
 }
 
+.button.secondary:hover {
+  border-color: rgba(33, 114, 103, 0.34);
+  box-shadow: 0 14px 28px rgba(24, 37, 43, 0.08);
+  transform: translateY(-2px);
+}
+
 .hero-visual {
   position: relative;
   min-height: 620px;
+  animation: fade-up 880ms var(--ease-out) 220ms both;
 }
 
 .hero-visual img {
@@ -214,6 +292,14 @@ h3 {
   object-fit: cover;
   border-radius: 8px;
   box-shadow: var(--shadow);
+  transition:
+    transform 700ms var(--ease-out),
+    filter 700ms var(--ease-out);
+}
+
+.hero-visual:hover img {
+  filter: saturate(1.04) contrast(1.02);
+  transform: scale(1.012);
 }
 
 .dashboard-preview {
@@ -228,6 +314,9 @@ h3 {
     linear-gradient(145deg, rgba(216, 238, 240, 0.88), rgba(255, 255, 255, 0.8)),
     var(--panel);
   box-shadow: var(--shadow);
+  animation:
+    fade-up 780ms var(--ease-out) 520ms both,
+    soft-float 7s ease-in-out 1.3s infinite;
 }
 
 .preview-header {
@@ -254,6 +343,7 @@ h3 {
 
 .balance-card {
   padding: 22px;
+  animation: count-glow 5.2s ease-in-out 1.8s infinite;
 }
 
 .balance-card p,
@@ -285,6 +375,16 @@ h3 {
 .metric-grid div {
   min-height: 92px;
   padding: 16px;
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.metric-grid div:hover {
+  border-color: rgba(33, 114, 103, 0.24);
+  box-shadow: 0 12px 28px rgba(24, 37, 43, 0.08);
+  transform: translateY(-2px);
 }
 
 .metric-grid strong {
@@ -320,6 +420,14 @@ h3 {
   padding: 26px;
   background: rgba(255, 255, 255, 0.06);
   color: white;
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.trust-strip div:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
 }
 
 .trust-strip span {
@@ -355,6 +463,23 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: white;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.feature-card:hover,
+.outcome-grid article:hover,
+.benefit-list div:hover,
+.security-points span:hover {
+  transform: translateY(-4px);
+}
+
+.feature-card:hover,
+.outcome-grid article:hover {
+  border-color: rgba(33, 114, 103, 0.28);
+  box-shadow: 0 20px 46px rgba(24, 37, 43, 0.1);
 }
 
 .feature-icon {
@@ -388,6 +513,10 @@ h3 {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--paper);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .outcome-grid strong {
@@ -417,6 +546,13 @@ h3 {
   padding: 22px;
   border-left: 4px solid var(--green);
   background: white;
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.benefit-list div:hover {
+  box-shadow: 0 18px 38px rgba(24, 37, 43, 0.08);
 }
 
 .benefit-list span {
@@ -445,6 +581,13 @@ h3 {
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.08);
   font-weight: 800;
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.security-points span:hover {
+  background: rgba(255, 255, 255, 0.13);
 }
 
 .cta-section {
@@ -523,12 +666,17 @@ h3 {
   }
 
   h1 {
-    font-size: clamp(2.6rem, 16vw, 4.6rem);
+    font-size: clamp(2.35rem, 13vw, 3.9rem);
   }
 
   .hero-actions,
   .button {
     width: 100%;
+  }
+
+  .hero-proof {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .hero-visual {
@@ -562,5 +710,16 @@ h3 {
 
   .feature-icon {
     margin-bottom: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
   }
 }
