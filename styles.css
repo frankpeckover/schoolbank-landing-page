@@ -305,18 +305,20 @@ h3 {
 .screenshot-stage {
   min-height: 560px;
   padding: 34px 0 76px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .screenshot-stage .screenshot-main {
   position: relative;
   z-index: 1;
   display: block;
-  width: 86%;
+  width: min(92%, 620px);
   height: auto;
-  aspect-ratio: 16 / 9;
   border: 1px solid rgba(33, 114, 103, 0.16);
   background: white;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
 
@@ -327,10 +329,9 @@ h3 {
   bottom: 76px;
   width: min(70%, 620px);
   height: auto;
-  aspect-ratio: 16 / 9;
   border: 1px solid rgba(33, 114, 103, 0.2);
   background: white;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   box-shadow: 0 28px 78px rgba(24, 37, 43, 0.22);
 }
