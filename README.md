@@ -7,6 +7,7 @@ A small static landing/info page for the MeritBank school wallet and reward econ
 - `index.html` contains the page content and structure.
 - `styles.css` contains all visual styling and responsive layout rules.
 - `assets/screenshot-sign-in.png`, `assets/screenshot-dashboard.png`, and `assets/screenshot-users.png` are screenshots from the app used by the page.
+- `assets/meritbank-logo.svg` is copied from the app and used in the header and footer.
 
 ## Replacing Screenshots
 

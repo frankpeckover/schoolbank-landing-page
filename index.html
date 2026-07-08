@@ -6,208 +6,221 @@
     <title>MeritBank</title>
     <meta
       name="description"
-      content="MeritBank helps schools run a clear reward economy with staff-issued credits, student wallets, shop requests, analytics, and admin controls."
+      content="MeritBank helps schools run behaviour rewards with staff-issued credits, student wallets, reward shop requests, analytics, and audit history."
     >
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#" aria-label="MeritBank home">
-        <span class="brand-mark">MB</span>
-        <span>MeritBank</span>
-      </a>
-      <nav class="site-nav" aria-label="Primary navigation">
-        <a href="#platform">Product</a>
-        <a href="#outcomes">Workflow</a>
-        <a href="#benefits">Admin</a>
-        <a href="#security">Security</a>
-        <a class="nav-cta" href="#contact">Book a walkthrough</a>
-      </nav>
+      <div class="utility-bar">
+        <a href="mailto:hello@meritbank.example">Contact</a>
+        <a href="mailto:hello@meritbank.example">Support</a>
+      </div>
+
+      <div class="nav-shell">
+        <a class="brand" href="#" aria-label="MeritBank home">
+          <img src="assets/meritbank-logo.svg" alt="" aria-hidden="true">
+          <span>MeritBank</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="#why">Why MeritBank?</a>
+          <a href="#solutions">Solutions</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#security">Security</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="button ghost" href="#workflow">Explore</a>
+          <a class="button primary" href="#contact">Book a walkthrough</a>
+        </div>
+      </div>
     </header>
 
     <main>
       <section class="hero">
-        <div class="hero-content">
-          <p class="eyebrow">A school wallet for rewards that matter</p>
-          <h1>School rewards, clearly managed.</h1>
+        <div class="hero-copy-block">
+          <p class="eyebrow">Behaviour rewards for school communities</p>
+          <h1>Make positive behaviour visible.</h1>
           <p class="hero-copy">
-            MeritBank gives schools a practical reward banking system: staff issue credits or
-            deductions, students track balances and goals, and leaders keep the whole economy visible.
+            MeritBank gives staff a simple way to award behaviour credits, students a clear wallet
+            to track progress, and school leaders the insight to keep rewards consistent.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#contact">Book a walkthrough</a>
-            <a class="button secondary" href="#platform">Explore the platform</a>
-          </div>
-          <div class="hero-proof" aria-label="MeritBank product highlights">
-            <span>Staff-issued credits</span>
-            <span>Student wallets</span>
-            <span>Shop requests</span>
-            <span>Audit and analytics</span>
+            <a class="button secondary" href="#solutions">See the platform</a>
           </div>
         </div>
 
         <!--
           Screenshot swap guide:
-          - assets/screenshot-sign-in.png controls the main hero sign-in image.
+          - assets/screenshot-sign-in.png controls the hero sign-in image.
           - assets/screenshot-dashboard.png controls the dashboard images.
           - assets/screenshot-users.png controls the users section image.
           Replace those files with the same names to update the page without editing HTML.
         -->
-        <div class="hero-visual screenshot-stage" aria-label="MeritBank product screenshots">
+        <div class="hero-product" aria-label="MeritBank product screenshots">
           <img
-            class="screenshot-main"
+            class="hero-screen hero-screen-main"
+            src="assets/screenshot-dashboard.png"
+            alt="MeritBank analytics dashboard"
+          >
+          <img
+            class="hero-screen hero-screen-overlap"
             src="assets/screenshot-sign-in.png"
             alt="MeritBank sign in screen"
           >
-          <img
-            class="screenshot-float"
-            src="assets/screenshot-dashboard.png"
-            alt="MeritBank analytics dashboard showing reward economy charts"
-          >
-          <div class="dashboard-preview screenshot-stat">
-            <p>Total Watchies</p>
+          <div class="hero-metric" aria-label="Example reward economy metric">
+            <span>Total Watchies</span>
             <strong>6,874</strong>
-            <span>Live reward economy visibility</span>
+            <small>Live reward activity</small>
           </div>
         </div>
       </section>
 
-      <section class="trust-strip" aria-label="What MeritBank helps improve">
-        <div>
-          <span class="trust-symbol">+</span>
-          <strong>Staff issue credits</strong>
-          <span>Reward, deduct, or adjust balances from classroom and cohort workflows.</span>
+      <section class="community-band" id="why" aria-label="MeritBank community outcomes">
+        <div class="section-heading">
+          <p class="eyebrow">Built around the whole reward loop</p>
+          <h2>A behaviour reward system for staff, students, and school teams.</h2>
         </div>
-        <div>
-          <span class="trust-symbol">=</span>
-          <strong>Students see progress</strong>
-          <span>Wallets, balance trends, goals, recent activity, and shop requests stay visible.</span>
-        </div>
-        <div>
-          <span class="trust-symbol">-&gt;</span>
-          <strong>Leaders keep oversight</strong>
-          <span>Analytics, audit history, users, groups, timetable, and shop controls stay connected.</span>
+        <div class="community-grid">
+          <article>
+            <span class="icon-mark">+</span>
+            <h3>Staff can act quickly</h3>
+            <p>Award or deduct credits with clear reasons, class context, and visible history.</p>
+          </article>
+          <article>
+            <span class="icon-mark">=</span>
+            <h3>Students see progress</h3>
+            <p>Balances, goals, recent activity, and shop requests turn behaviour into something tangible.</p>
+          </article>
+          <article>
+            <span class="icon-mark">✓</span>
+            <h3>Teams stay consistent</h3>
+            <p>Analytics and logs help schools understand patterns without adding more manual tracking.</p>
+          </article>
         </div>
       </section>
 
-      <section class="section intro split-section" id="platform">
+      <section class="split-section" id="solutions">
         <div class="section-copy">
-          <p class="eyebrow">Product visibility</p>
-          <h2>See the reward economy clearly.</h2>
+          <p class="eyebrow">One clear place</p>
+          <h2>See the reward economy without chasing spreadsheets.</h2>
           <p>
-            MeritBank brings together active students, shop requests, total currency, pending holds,
-            balance trends, purchasing trends, and cohort-level reporting in one professional dashboard.
+            Active students, shop requests, issued credits, deductions, holds, and purchasing trends
+            sit together in one calm dashboard built for repeated school use.
           </p>
+          <ul class="check-list">
+            <li>Behaviour credits and deductions</li>
+            <li>Student wallets and goals</li>
+            <li>Reward shop request workflow</li>
+          </ul>
         </div>
-        <figure class="product-screenshot">
-          <img src="assets/screenshot-dashboard.png" alt="MeritBank analytics dashboard">
-          <figcaption>Analytics for balances, active students, holds, requests, and purchasing trends.</figcaption>
+        <figure class="product-shot">
+          <img src="assets/screenshot-dashboard.png" alt="MeritBank dashboard screenshot">
+          <figcaption>Dashboard visibility for activity, balances, trends, and requests.</figcaption>
         </figure>
       </section>
 
-      <section class="feature-grid" aria-label="MeritBank features">
-        <article class="feature-card">
-          <span class="feature-symbol" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>
-          </span>
-          <h3>Award behaviour credits</h3>
-          <p>Staff can reward or deduct currency with clear reasons and student-level history.</p>
+      <section class="solutions-grid" aria-label="MeritBank solution areas">
+        <article>
+          <span class="solution-icon">01</span>
+          <h3>Behaviour Credits</h3>
+          <p>Give staff a shared system for recognising actions that match school expectations.</p>
         </article>
-        <article class="feature-card">
-          <span class="feature-symbol" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M4 7h16v11H4zM8 7V5h8v2M8 13h4"></path></svg>
-          </span>
-          <h3>Student wallets</h3>
-          <p>Students see available balance, goals, balance trends, shop requests, and recent activity.</p>
+        <article>
+          <span class="solution-icon">02</span>
+          <h3>Student Wallets</h3>
+          <p>Let students understand their balance, activity, goals, and pending reward requests.</p>
         </article>
-        <article class="feature-card">
-          <span class="feature-symbol" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M5 9h14l-1 10H6L5 9zM8 9V6h8v3M9 14h6"></path></svg>
-          </span>
-          <h3>Staff-defined shop</h3>
-          <p>Create reward items, approve requests, manage quantities, and keep rewards appropriate.</p>
+        <article>
+          <span class="solution-icon">03</span>
+          <h3>Reward Shop</h3>
+          <p>Define meaningful rewards, manage availability, and review requests in one workflow.</p>
         </article>
-        <article class="feature-card">
-          <span class="feature-symbol" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M5 19V5M5 19h14M9 16v-5M13 16V8M17 16v-8"></path></svg>
-          </span>
-          <h3>Audit and analytics</h3>
-          <p>Track currency circulation, issuer activity, purchasing trends, and administrative changes.</p>
+        <article>
+          <span class="solution-icon">04</span>
+          <h3>Insights</h3>
+          <p>Use audit history and trends to see what is happening across the reward program.</p>
         </article>
       </section>
 
-      <section class="outcomes split-section reverse" id="outcomes">
-        <div class="section-copy outcome-lead">
-          <p class="eyebrow">Why schools pay attention</p>
-          <h2>A simple loop that scales from one class to the whole school.</h2>
-        </div>
-        <div class="journey-panel" aria-label="MeritBank rewards workflow">
-          <div>
-            <span class="step-marker">1</span>
-            <strong>Staff issue currency</strong>
-            <p>Teachers and authorised staff reward or deduct Watchies with a reason.</p>
-          </div>
-          <div>
-            <span class="step-marker">2</span>
-            <strong>Students track progress</strong>
-            <p>Balances, goals, shop requests, and activity give students a clear view.</p>
-          </div>
-          <div>
-            <span class="step-marker">3</span>
-            <strong>Rewards get redeemed</strong>
-            <p>Shop requests and activity history keep the reward loop visible.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section benefits split-section" id="benefits">
-        <div class="benefit-copy section-copy">
-          <p class="eyebrow">Administration without the mess</p>
-          <h2>Built for real school operations, not a novelty points board.</h2>
+      <section class="purpose-section">
+        <div class="purpose-panel">
+          <p class="eyebrow">Purpose</p>
+          <h2>Rewards should reinforce behaviour, not create another admin burden.</h2>
           <p>
-            The current app already includes user management, imports, groups, timetable, shop setup,
-            analytics, transaction logs, audit logs, SSO options, and legal/data-retention pages.
+            MeritBank keeps the core loop simple: recognise behaviour, show progress, approve rewards,
+            and review activity. The product is intentionally focused on school behaviour management,
+            not full finance.
           </p>
         </div>
-        <figure class="product-screenshot compact-screenshot">
-          <img src="assets/screenshot-users.png" alt="MeritBank users administration table">
-          <figcaption>Manage staff and student accounts with filters, imports, exports, and role controls.</figcaption>
-        </figure>
-        <div class="benefit-list">
-          <div>
-            <strong>Role-based administration</strong>
-            <span>Admin, staff, and student experiences expose the right tools to the right people.</span>
-          </div>
-          <div>
-            <strong>Cohorts, groups, and timetable</strong>
-            <span>Organise students around the structures schools already use.</span>
-          </div>
-          <div>
-            <strong>Shop and request workflow</strong>
-            <span>Set up rewards, manage availability, and review student shop requests.</span>
-          </div>
+      </section>
+
+      <section class="workflow-section" id="workflow">
+        <div class="section-heading narrow">
+          <p class="eyebrow">How it works</p>
+          <h2>From classroom moment to student reward.</h2>
+        </div>
+        <div class="workflow-grid">
+          <article>
+            <span>1</span>
+            <h3>Issue credits</h3>
+            <p>Staff record a reward or deduction with the reason attached.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>Track progress</h3>
+            <p>Students can see balances, goals, recent activity, and available rewards.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Request rewards</h3>
+            <p>Students spend credits through a staff-defined reward shop.</p>
+          </article>
+          <article>
+            <span>4</span>
+            <h3>Review trends</h3>
+            <p>School teams use logs and analytics to keep the program visible.</p>
+          </article>
         </div>
       </section>
 
-      <section class="security-band" id="security">
+      <section class="split-section reverse">
+        <div class="section-copy">
+          <p class="eyebrow">Operational clarity</p>
+          <h2>Designed for real school structures.</h2>
+          <p>
+            MeritBank supports the practical pieces around the reward program: staff and student accounts,
+            imports, groups, shop setup, transaction logs, and audit history.
+          </p>
+        </div>
+        <figure class="product-shot compact">
+          <img src="assets/screenshot-users.png" alt="MeritBank users table screenshot">
+          <figcaption>School account and role visibility without visual noise.</figcaption>
+        </figure>
+      </section>
+
+      <section class="security-section" id="security">
         <div>
-          <p class="eyebrow">Trust from day one</p>
-          <h2>Student data, staff permissions, and audit history belong at the centre.</h2>
+          <p class="eyebrow">Security and confidence</p>
+          <h2>Built with student data and staff permissions in mind.</h2>
+          <p>
+            Schools need a reward system they can explain, audit, and manage responsibly from day one.
+          </p>
         </div>
-        <div class="security-points">
+        <div class="security-grid">
           <span>Role-based access</span>
           <span>Transaction log</span>
-          <span>Audit log</span>
-          <span>SSO and password tools</span>
+          <span>Audit history</span>
+          <span>SSO-ready controls</span>
         </div>
       </section>
 
       <section class="cta-section" id="contact">
-        <p class="eyebrow">Start simple, build carefully</p>
-        <h2>Ready to shape MeritBank with real school behaviour teams?</h2>
+        <p class="eyebrow">Ready to start simple?</p>
+        <h2>Shape MeritBank around the behaviour workflows your school already uses.</h2>
         <p>
-          We are starting with the useful core: school currency, wallets, shop requests, analytics,
-          user administration, and auditability. The next version can grow around the workflows schools use every day.
+          Start with credits, wallets, reward requests, and clear visibility. Grow the platform from
+          real school feedback.
         </p>
         <a class="button primary" href="mailto:hello@meritbank.example">Book a walkthrough</a>
       </section>
@@ -215,8 +228,11 @@
 
     <footer class="site-footer">
       <div class="footer-brand">
-        <span>MeritBank</span>
-        <span>A school wallet for rewards that matter.</span>
+        <img src="assets/meritbank-logo.svg" alt="" aria-hidden="true">
+        <div>
+          <strong>MeritBank</strong>
+          <span>A school wallet for rewards that matter.</span>
+        </div>
       </div>
       <nav class="footer-links" aria-label="Legal and support links">
         <a href="/privacy">Privacy</a>
