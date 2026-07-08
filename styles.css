@@ -349,6 +349,8 @@ p {
 .community-band {
   background: var(--brand-dark);
   color: white;
+  padding-top: clamp(46px, 6vw, 74px);
+  padding-bottom: clamp(46px, 6vw, 74px);
 }
 
 .community-band .eyebrow,
@@ -374,6 +376,58 @@ p {
   margin-bottom: 0;
 }
 
+.community-heading {
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.community-heading h2 {
+  max-width: 700px;
+}
+
+.loop-visual {
+  display: grid;
+  gap: 10px;
+  max-width: 480px;
+}
+
+.loop-visual span {
+  position: relative;
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  padding: 14px 18px 14px 54px;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  font-weight: 850;
+}
+
+.loop-visual span::before {
+  position: absolute;
+  left: 18px;
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 8px;
+  background: #f6c66d;
+  color: var(--brand-dark);
+  content: "+";
+  font-size: 0.9rem;
+  font-weight: 950;
+}
+
+.loop-visual span:nth-child(2)::before {
+  content: "=";
+}
+
+.loop-visual span:nth-child(3)::before {
+  content: "✓";
+}
+
 .section-heading.narrow {
   display: block;
   max-width: 840px;
@@ -393,8 +447,8 @@ p {
 }
 
 .community-grid article {
-  min-height: 260px;
-  padding: clamp(24px, 4vw, 38px);
+  min-height: 220px;
+  padding: clamp(22px, 3vw, 32px);
   background: rgba(255, 255, 255, 0.07);
   transition:
     background-color 180ms ease,
@@ -418,7 +472,7 @@ p {
 }
 
 .icon-mark {
-  margin-bottom: 48px;
+  margin-bottom: 30px;
   border: 1px solid rgba(255, 255, 255, 0.22);
   color: #f6c66d;
   font-size: 1.35rem;
@@ -790,6 +844,10 @@ button {
 
   .section-heading {
     grid-template-columns: 1fr;
+  }
+
+  .community-heading {
+    gap: 22px;
   }
 
   .community-grid,
