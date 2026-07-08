@@ -13,7 +13,7 @@
   <body>
     <header class="site-header">
       <div class="utility-bar">
-        <a href="mailto:hello@meritbank.example">Contact</a>
+        <a href="#contact">Contact</a>
         <a href="mailto:hello@meritbank.example">Support</a>
       </div>
 
@@ -216,13 +216,61 @@
       </section>
 
       <section class="cta-section" id="contact">
-        <p class="eyebrow">Ready to start simple?</p>
-        <h2>Shape MeritBank around the behaviour workflows your school already uses.</h2>
-        <p>
-          Start with credits, wallets, reward requests, and clear visibility. Grow the platform from
-          real school feedback.
-        </p>
-        <a class="button primary" href="mailto:hello@meritbank.example">Book a walkthrough</a>
+        <div class="cta-copy">
+          <p class="eyebrow">Ready to start simple?</p>
+          <h2>Book a walkthrough.</h2>
+          <p>
+            Tell us a little about your school and the behaviour reward workflow you want to support.
+            We will use it to shape a practical MeritBank walkthrough.
+          </p>
+        </div>
+        <form class="walkthrough-form" action="/walkthrough-request" method="post">
+          <div class="form-grid">
+            <label>
+              <span>Your name</span>
+              <input name="name" type="text" autocomplete="name" required>
+            </label>
+            <label>
+              <span>Work email</span>
+              <input name="email" type="email" autocomplete="email" required>
+            </label>
+            <label>
+              <span>School name</span>
+              <input name="school" type="text" autocomplete="organization" required>
+            </label>
+            <label>
+              <span>Role</span>
+              <input name="role" type="text" autocomplete="organization-title" placeholder="Deputy, teacher, IT, wellbeing...">
+            </label>
+            <label>
+              <span>Approx. students</span>
+              <select name="schoolSize">
+                <option value="">Select a range</option>
+                <option>Under 300</option>
+                <option>300-800</option>
+                <option>800-1500</option>
+                <option>1500+</option>
+              </select>
+            </label>
+            <label>
+              <span>Most interested in</span>
+              <select name="interest">
+                <option>Behaviour credits</option>
+                <option>Student wallets</option>
+                <option>Reward shop</option>
+                <option>Analytics and audit history</option>
+              </select>
+            </label>
+          </div>
+          <label class="form-message">
+            <span>What would you like to see?</span>
+            <textarea name="message" rows="5" placeholder="Current reward process, pain points, year levels, rollout timing..."></textarea>
+          </label>
+          <div class="form-footer">
+            <p>Submitting sends your request to the MeritBank team once the site endpoint is connected.</p>
+            <button class="button primary" type="submit">Request walkthrough</button>
+          </div>
+        </form>
       </section>
     </main>
 

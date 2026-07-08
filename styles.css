@@ -457,6 +457,13 @@ p {
   font-size: 1.06rem;
 }
 
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
 .check-list {
   display: grid;
   gap: 10px;
@@ -635,13 +642,102 @@ p {
 }
 
 .cta-section {
-  max-width: 980px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 68px);
+  align-items: start;
+  max-width: 1220px;
   margin: 0 auto;
-  text-align: center;
 }
 
-.cta-section .button {
-  margin-top: 14px;
+.cta-copy {
+  position: sticky;
+  top: 132px;
+}
+
+.walkthrough-form {
+  display: grid;
+  gap: 18px;
+  padding: clamp(22px, 4vw, 34px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(246, 247, 246, 0.92)),
+    white;
+  box-shadow: var(--shadow-md);
+  text-align: left;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.walkthrough-form label {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.walkthrough-form label span {
+  color: var(--foreground);
+  font-size: 0.88rem;
+  font-weight: 850;
+}
+
+.walkthrough-form input,
+.walkthrough-form select,
+.walkthrough-form textarea {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  color: var(--foreground);
+  padding: 12px 13px;
+  outline: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+
+.walkthrough-form textarea {
+  min-height: 132px;
+  resize: vertical;
+}
+
+.walkthrough-form input:focus,
+.walkthrough-form select:focus,
+.walkthrough-form textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(39, 87, 94, 0.16);
+}
+
+.walkthrough-form input::placeholder,
+.walkthrough-form textarea::placeholder {
+  color: #87938e;
+}
+
+.form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding-top: 4px;
+}
+
+.form-footer p {
+  max-width: 430px;
+  margin-bottom: 0;
+  color: var(--subtle);
+  font-size: 0.9rem;
+}
+
+.form-footer .button {
+  flex: 0 0 auto;
+  cursor: pointer;
 }
 
 .site-footer {
@@ -691,6 +787,7 @@ p {
 
   .hero,
   .split-section,
+  .cta-section,
   .security-section {
     grid-template-columns: 1fr;
   }
@@ -715,6 +812,10 @@ p {
 
   .split-section.reverse .section-copy {
     order: 0;
+  }
+
+  .cta-copy {
+    position: static;
   }
 
   .site-footer {
@@ -818,8 +919,14 @@ p {
   .community-grid,
   .solutions-grid,
   .workflow-grid,
+  .form-grid,
   .security-grid {
     grid-template-columns: 1fr;
+  }
+
+  .form-footer {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   .product-shot img,

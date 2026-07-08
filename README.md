@@ -22,3 +22,7 @@ No HTML changes are needed if the filenames stay the same.
 ## Local Preview
 
 Open `index.html` directly in a browser. No build step is required.
+
+## Walkthrough Form
+
+The walkthrough form posts to `/walkthrough-request`. Connect that route to your preferred backend or hosted form handler when the landing page is deployed.
