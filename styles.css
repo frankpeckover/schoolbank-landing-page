@@ -22,6 +22,7 @@
   --shadow-lg: 0 34px 84px rgba(23, 32, 28, 0.16);
   --page-max: 1120px;
   --page-wide: 1180px;
+  --header-wide: 1280px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -36,9 +37,7 @@ html {
 
 body {
   margin: 0;
-  background:
-    linear-gradient(180deg, rgba(231, 238, 235, 0.9) 0%, rgba(238, 241, 240, 0.98) 42%, #ffffff 100%),
-    var(--background);
+  background-color: rgba(255, 255, 255, 0);
   color: var(--foreground);
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -116,7 +115,7 @@ p {
   top: 0;
   z-index: 20;
   border-bottom: 1px solid rgba(204, 213, 208, 0.86);
-  background: rgba(238, 241, 240, 0.92);
+  background: rgba(238, 241, 240, 0.94);
   backdrop-filter: blur(18px);
 }
 
@@ -130,10 +129,10 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  width: min(100%, var(--page-wide));
+  width: min(100%, var(--header-wide));
   min-height: 76px;
   margin: 0 auto;
-  padding: 14px clamp(20px, 5vw, 72px);
+  padding: 14px clamp(20px, 4vw, 44px);
 }
 
 .brand,
@@ -171,6 +170,7 @@ p {
 
 .button {
   display: inline-flex;
+  flex: 0 0 auto;
   min-height: 46px;
   align-items: center;
   justify-content: center;
@@ -178,6 +178,7 @@ p {
   padding: 12px 18px;
   border: 1px solid transparent;
   font-weight: 850;
+  white-space: nowrap;
   transition:
     background-color 180ms ease,
     border-color 180ms ease,
@@ -631,9 +632,11 @@ button {
   grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
   gap: clamp(32px, 5vw, 72px);
   align-items: center;
-  width: min(100%, var(--page-wide));
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
+  padding-right: max(clamp(20px, 5vw, 72px), calc((100vw - var(--page-wide)) / 2 + 20px));
+  padding-left: max(clamp(20px, 5vw, 72px), calc((100vw - var(--page-wide)) / 2 + 20px));
   background: var(--brand-dark);
   color: white;
 }
@@ -674,6 +677,10 @@ button {
 .cta-copy {
   position: sticky;
   top: 132px;
+}
+
+.cta-copy h2 {
+  font-size: clamp(2rem, 3.2vw, 3.25rem);
 }
 
 .walkthrough-form {
