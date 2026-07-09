@@ -23,6 +23,7 @@
   --page-max: 1120px;
   --page-wide: 1180px;
   --header-wide: 1280px;
+  --header-offset: 79px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -32,11 +33,13 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-offset);
   overflow-x: hidden;
 }
 
 body {
   margin: 0;
+  padding-top: var(--header-offset);
   background-color: rgba(255, 255, 255, 0);
   color: var(--foreground);
   font-family:
@@ -111,8 +114,10 @@ p {
 }
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  right: 0;
+  left: 0;
   z-index: 20;
   border-bottom: 1px solid rgba(204, 213, 208, 0.86);
   background: rgba(238, 241, 240, 0.94);
@@ -866,6 +871,10 @@ button {
 }
 
 @media (max-width: 660px) {
+  :root {
+    --header-offset: 207px;
+  }
+
   .nav-shell {
     align-items: flex-start;
     flex-direction: column;
