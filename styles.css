@@ -627,13 +627,25 @@ button {
 }
 
 .platform-grid {
-  background: var(--panel-soft);
-  box-shadow: 0 0 0 100vmax var(--panel-soft);
-  clip-path: inset(0 -100vmax);
+  position: relative;
+  z-index: 0;
   padding-bottom: clamp(72px, 8vw, 122px);
 }
 
+.platform-grid::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: -1;
+  width: 100vw;
+  height: 52%;
+  content: "";
+  background: var(--panel-soft);
+  transform: translateX(-50%);
+}
+
 .solutions-grid article {
+  position: relative;
   min-height: 276px;
   padding: 26px;
   border: 1px solid var(--border-subtle);
@@ -1066,6 +1078,27 @@ button {
     max-width: 11ch;
   }
 
+  h2 {
+    font-size: clamp(2rem, 9.2vw, 2.65rem);
+    max-width: 12ch;
+  }
+
+  .community-heading h2,
+  .section-heading.narrow h2,
+  .purpose-panel h2 {
+    max-width: 12ch;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .community-grid article {
+    min-width: 0;
+  }
+
+  .community-grid p {
+    max-width: 31ch;
+  }
+
   .hero-copy {
     font-size: 1rem;
   }
@@ -1081,7 +1114,7 @@ button {
   .security-section,
   .cta-section,
   .site-footer {
-    width: 100%;
+    width: auto;
     max-width: 100%;
     padding-right: 24px;
     padding-left: 24px;
@@ -1097,6 +1130,10 @@ button {
   }
 
   .hero-copy {
+    max-width: 31ch;
+  }
+
+  .section-copy p {
     max-width: 31ch;
   }
 
