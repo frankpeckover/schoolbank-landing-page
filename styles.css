@@ -507,6 +507,14 @@ p {
   order: 2;
 }
 
+.platform-section {
+  background:
+    linear-gradient(180deg, rgba(246, 247, 246, 0.96), rgba(238, 241, 240, 0.84)),
+    var(--panel-soft);
+  box-shadow: 0 0 0 100vmax var(--panel-soft);
+  clip-path: inset(0 -100vmax);
+}
+
 .section-copy {
   max-width: 640px;
   min-width: 0;
@@ -602,6 +610,13 @@ button {
   margin-right: auto;
   margin-left: auto;
   padding-top: 0;
+}
+
+.platform-grid {
+  background: var(--panel-soft);
+  box-shadow: 0 0 0 100vmax var(--panel-soft);
+  clip-path: inset(0 -100vmax);
+  padding-bottom: clamp(72px, 8vw, 122px);
 }
 
 .solutions-grid article {
