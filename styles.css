@@ -226,12 +226,12 @@ p {
   position: relative;
   display: inline-grid;
   flex: 0 0 auto;
-  width: 42px;
+  width: 34px;
   height: 40px;
   place-items: center;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface);
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
   color: var(--brand);
   cursor: pointer;
   transition:
@@ -242,8 +242,7 @@ p {
 }
 
 .theme-toggle:hover {
-  border-color: rgba(24, 63, 61, 0.32);
-  background: var(--surface-hover);
+  color: var(--accent);
   transform: translateY(-1px);
 }
 
@@ -260,16 +259,19 @@ p {
 .theme-icon.moon {
   opacity: 0;
   transform: scale(0.7) rotate(-18deg);
+  visibility: hidden;
 }
 
 :root[data-theme="dark"] .theme-icon.sun {
   opacity: 0;
   transform: scale(0.7) rotate(18deg);
+  visibility: hidden;
 }
 
 :root[data-theme="dark"] .theme-icon.moon {
   opacity: 1;
   transform: scale(1) rotate(0);
+  visibility: visible;
 }
 
 .button {
@@ -1021,13 +1023,13 @@ button {
 }
 
 .site-footer {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(520px, 1.1fr);
   gap: 24px;
   align-items: center;
-  justify-content: space-between;
-  width: min(100%, var(--page-wide));
+  width: 100%;
   margin: 0 auto;
-  padding: 28px clamp(20px, 5vw, 72px);
+  padding: 28px max(clamp(20px, 5vw, 72px), calc((100vw - var(--page-wide)) / 2 + 20px));
   border-top: 1px solid var(--border-subtle);
   background: var(--surface);
   color: var(--muted);
@@ -1049,7 +1051,7 @@ button {
 .footer-links {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 12px 18px;
   font-size: 0.92rem;
   font-weight: 800;
@@ -1106,7 +1108,7 @@ button {
 
   .site-footer {
     align-items: flex-start;
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
   .footer-links {
@@ -1143,7 +1145,9 @@ button {
   }
 
   .nav-actions {
-    display: block;
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr);
+    align-items: center;
     width: 100%;
     max-width: 100%;
   }
