@@ -8,18 +8,7 @@
       name="description"
       content="Myntix helps schools make positive behaviour visible with simple staff rewards, student goals, a managed reward shop, and clear program insights."
     >
-    <script>
-      (function () {
-        var storedTheme = null;
-        try {
-          storedTheme = localStorage.getItem("myntix-theme");
-        } catch (error) {
-          storedTheme = null;
-        }
-        document.documentElement.dataset.theme = storedTheme || "light";
-      })();
-    </script>
-    <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header class="site-header">
@@ -40,27 +29,7 @@
           <a href="mailto:hello@myntix.example?subject=Myntix%20support%20request">Support</a>
         </nav>
         <div class="nav-actions">
-          <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" onclick="window.myntixToggleTheme && window.myntixToggleTheme()">
-            <span class="theme-icon sun" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <circle cx="12" cy="12" r="4"></circle>
-                <path d="M12 2v2"></path>
-                <path d="M12 20v2"></path>
-                <path d="m4.93 4.93 1.41 1.41"></path>
-                <path d="m17.66 17.66 1.41 1.41"></path>
-                <path d="M2 12h2"></path>
-                <path d="M20 12h2"></path>
-                <path d="m6.34 17.66-1.41 1.41"></path>
-                <path d="m19.07 4.93-1.41 1.41"></path>
-              </svg>
-            </span>
-            <span class="theme-icon moon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <path d="M20.5 14.4A8.5 8.5 0 0 1 9.6 3.5 8.5 8.5 0 1 0 20.5 14.4Z"></path>
-              </svg>
-            </span>
-          </button>
-          <a class="button primary" href="#contact">Book a walkthrough</a>
+<a class="button primary" href="#contact">Book a walkthrough</a>
         </div>
       </div>
     </header>
@@ -357,31 +326,5 @@
         <span>Copyright Myntix. All rights reserved.</span>
       </div>
     </footer>
-    <script>
-      (function () {
-        var toggle = document.querySelector(".theme-toggle");
-        if (!toggle) {
-          return;
-        }
-
-        function setTheme(theme) {
-          var isDark = theme === "dark";
-          document.documentElement.dataset.theme = theme;
-          try {
-            localStorage.setItem("myntix-theme", theme);
-          } catch (error) {
-            // Theme still changes for this page view when storage is unavailable.
-          }
-          toggle.setAttribute("aria-pressed", String(isDark));
-          toggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
-        }
-
-        window.myntixToggleTheme = function () {
-          setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
-        };
-
-        setTheme(document.documentElement.dataset.theme || "light");
-      })();
-    </script>
-  </body>
+</body>
 </html>
