@@ -6,9 +6,15 @@ A small static landing/info page for the Myntix school rewards app.
 
 - `index.html` contains the page content and structure.
 - `styles.css` contains all visual styling and responsive layout rules.
+- `robots.txt` and `sitemap.xml` provide crawler discovery metadata.
 - `assets/illustration-hero.png`, `assets/illustration-shop.png`, and `assets/illustration-leadership.png` are marketing illustrations used by the page.
-- `assets/myntix-mark.png` is used in the header and footer.
-- `assets/myntix-logo-full.png` and `assets/myntix-wordmark.png` are available brand assets.
+- `assets/myntix-logo-lockup.png` is used in the header and footer.
+- `assets/myntix-og.png` is used for social link previews.
+- `assets/myntix-mark.png`, `assets/myntix-logo-full.png`, and `assets/myntix-wordmark.png` are available brand assets.
+
+## SEO Setup
+
+The page uses `https://www.myntix.com.au/` for canonical, Open Graph, structured data, robots, and sitemap URLs. Replace that value in `index.html`, `robots.txt`, and `sitemap.xml` if the production domain changes.
 
 ## Replacing Illustrations
 

@@ -978,6 +978,52 @@ button {
   font-weight: 500;
 }
 
+.legal-main {
+  width: min(100%, 920px);
+  margin: 0 auto;
+  padding: clamp(54px, 8vw, 96px) clamp(20px, 5vw, 48px);
+}
+
+.legal-article {
+  padding: clamp(24px, 5vw, 46px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.legal-article h1 {
+  max-width: 760px;
+  margin-bottom: 18px;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+}
+
+.legal-updated {
+  margin-bottom: 38px;
+  color: var(--subtle);
+  font-size: 0.94rem;
+  font-weight: 800;
+}
+
+.legal-section {
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.legal-section + .legal-section {
+  margin-top: 24px;
+}
+
+.legal-section h2 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  line-height: 1.25;
+}
+
+.legal-section p {
+  margin-bottom: 12px;
+}
+
 @media (max-width: 1060px) {
   .site-nav {
     display: none;
