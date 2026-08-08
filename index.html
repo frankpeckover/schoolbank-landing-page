@@ -8,15 +8,27 @@
       name="description"
       content="Myntix helps schools make positive behaviour visible with simple staff rewards, student goals, a managed reward shop, and clear program insights."
     >
+    <script>
+      (function () {
+        var storedTheme = localStorage.getItem("myntix-theme");
+        document.documentElement.dataset.theme = storedTheme || "light";
+      })();
+    </script>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header class="site-header">
       <div class="nav-shell">
-        <a class="brand" href="#" aria-label="Myntix home">
-          <img src="assets/myntix-mark.png" alt="" aria-hidden="true">
-          <span>Myntix</span>
-        </a>
+        <div class="brand-row">
+          <a class="brand" href="#" aria-label="Myntix home">
+            <img src="assets/myntix-mark.png" alt="" aria-hidden="true">
+            <span>Myntix</span>
+          </a>
+          <button class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+            <span class="theme-icon sun" aria-hidden="true">☀</span>
+            <span class="theme-icon moon" aria-hidden="true">☾</span>
+          </button>
+        </div>
         <nav class="site-nav" aria-label="Primary navigation">
           <a href="#why">Why Myntix?</a>
           <a href="#solutions">Platform</a>
@@ -24,7 +36,7 @@
           <a href="#workflow">Rollout</a>
           <a href="#security">Security</a>
           <a href="#contact">Contact</a>
-          <a href="mailto:hello@myntix.example">Support</a>
+          <a href="mailto:hello@myntix.example?subject=Myntix%20support%20request">Support</a>
         </nav>
         <div class="nav-actions">
           <a class="button primary" href="#contact">Book a walkthrough</a>
@@ -296,7 +308,7 @@
           </div>
           <label class="form-message">
             <span>Leave a message</span>
-            <textarea name="message" rows="5" placeholder="Current reward process, pain points, year levels, rollout timing..."></textarea>
+            <textarea name="message" rows="5" placeholder="Tell us what you are exploring, who it is for, and what would make the walkthrough useful."></textarea>
           </label>
           <div class="form-footer">
             <p>We will review your request and follow up with a practical walkthrough for your organisation.</p>
@@ -318,12 +330,31 @@
         <a href="/privacy">Privacy</a>
         <a href="/terms">Terms</a>
         <a href="/data-retention">Data retention</a>
-        <a href="mailto:hello@myntix.example">Support</a>
-      </nav>
-      <div class="footer-meta">
-        <span>Version 1.0</span>
+        <a href="mailto:hello@myntix.example?subject=Myntix%20support%20request">Support</a>
         <span>Copyright Myntix. All rights reserved.</span>
-      </div>
+      </nav>
     </footer>
+    <script>
+      (function () {
+        var toggle = document.querySelector(".theme-toggle");
+        if (!toggle) {
+          return;
+        }
+
+        function setTheme(theme) {
+          var isDark = theme === "dark";
+          document.documentElement.dataset.theme = theme;
+          localStorage.setItem("myntix-theme", theme);
+          toggle.setAttribute("aria-pressed", String(isDark));
+          toggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+        }
+
+        setTheme(document.documentElement.dataset.theme || "light");
+
+        toggle.addEventListener("click", function () {
+          setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+        });
+      })();
+    </script>
   </body>
 </html>
