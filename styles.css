@@ -167,27 +167,31 @@ p {
 }
 
 .brand-row {
+  flex: 0 0 auto;
   gap: 12px;
+  min-width: 222px;
 }
 
 .brand {
+  display: block;
   flex: 0 0 auto;
+  width: 222px;
   line-height: 0;
 }
 
 .brand img {
   display: block;
-  width: auto;
-  max-width: none;
-  height: 42px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1922 / 363;
   object-fit: contain;
 }
 
 .footer-brand img {
   display: block;
-  width: auto;
-  max-width: none;
-  height: 34px;
+  width: 180px;
+  height: auto;
+  aspect-ratio: 1922 / 363;
   object-fit: contain;
 }
 
@@ -1098,9 +1102,7 @@ button {
   }
 
   .brand-row {
-    justify-content: space-between;
-    width: 342px;
-    max-width: 100%;
+    min-width: 0;
   }
 
   .nav-actions,
