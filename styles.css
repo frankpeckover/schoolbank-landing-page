@@ -171,16 +171,19 @@ p {
 }
 
 .brand {
-  gap: 12px;
-  font-weight: 850;
-  font-size: 1.06rem;
+  line-height: 0;
 }
 
-.brand img,
+.brand img {
+  display: block;
+  width: 174px;
+  height: auto;
+}
+
 .footer-brand img {
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
+  display: block;
+  width: 150px;
+  height: auto;
 }
 
 .site-nav {
@@ -942,16 +945,14 @@ button {
 }
 
 .footer-brand {
-  gap: 12px;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .footer-brand div {
   display: grid;
   gap: 2px;
-}
-
-.footer-brand strong {
-  color: var(--foreground);
 }
 
 .footer-links {
