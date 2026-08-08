@@ -63,6 +63,42 @@ body {
   }
 }
 
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-scale-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes card-pop {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @keyframes float-soft {
   0%,
   100% {
@@ -81,6 +117,17 @@ body {
 
   100% {
     transform: translateX(100%);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(122, 228, 183, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(122, 228, 183, 0.22);
   }
 }
 
@@ -238,6 +285,10 @@ p {
   transform: translateY(-1px);
 }
 
+.hero-actions .button.primary {
+  animation: glow-pulse 4.8s ease-in-out 1.2s infinite;
+}
+
 .button.secondary,
 .button.ghost {
   border-color: var(--border);
@@ -270,6 +321,51 @@ p {
   color: var(--brand-dark);
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 680ms var(--ease-out),
+    transform 680ms var(--ease-out),
+    filter 680ms var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.illustration-shot.reveal,
+.hero-art {
+  transform-origin: center;
+}
+
+.illustration-shot.reveal {
+  filter: saturate(0.9);
+  transform: translateY(28px) scale(0.985);
+}
+
+.illustration-shot.reveal.is-visible {
+  filter: saturate(1);
+  transform: translateY(0) scale(1);
+}
+
+.solutions-grid article.reveal,
+.feature-grid article.reveal,
+.workflow-grid article.reveal,
+.community-grid article.reveal {
+  transform: translateY(30px) scale(0.985);
+}
+
+.solutions-grid article.reveal.is-visible,
+.feature-grid article.reveal.is-visible,
+.workflow-grid article.reveal.is-visible,
+.community-grid article.reveal.is-visible {
+  transform: translateY(0) scale(1);
+}
+
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(380px, 1fr);
@@ -283,7 +379,6 @@ p {
 }
 
 .hero-copy-block,
-.hero-art,
 .section-heading,
 .split-section,
 .solutions-grid,
@@ -292,6 +387,29 @@ p {
 .cta-section {
   min-width: 0;
   animation: fade-up 780ms var(--ease-out) both;
+}
+
+.hero-copy-block .eyebrow,
+.hero-copy-block h1,
+.hero-copy,
+.hero-actions {
+  animation: hero-rise 760ms var(--ease-out) both;
+}
+
+.hero-copy-block .eyebrow {
+  animation-delay: 80ms;
+}
+
+.hero-copy-block h1 {
+  animation-delay: 170ms;
+}
+
+.hero-copy {
+  animation-delay: 260ms;
+}
+
+.hero-actions {
+  animation-delay: 360ms;
 }
 
 .eyebrow {
@@ -318,6 +436,7 @@ p {
   position: relative;
   min-height: 540px;
   border-radius: 8px;
+  animation: hero-scale-in 880ms var(--ease-out) 220ms both;
 }
 
 .hero-art::before {
@@ -386,13 +505,17 @@ p {
 .hero-card-top {
   top: 24px;
   left: 20px;
-  animation: float-soft 7s ease-in-out 0.6s infinite;
+  animation:
+    card-pop 720ms var(--ease-out) 620ms both,
+    float-soft 7s ease-in-out 1.4s infinite;
 }
 
 .hero-card-bottom {
   right: 26px;
   bottom: 26px;
-  animation: float-soft 8s ease-in-out 1.3s infinite;
+  animation:
+    card-pop 720ms var(--ease-out) 760ms both,
+    float-soft 8s ease-in-out 1.7s infinite;
 }
 
 .hero-card span {
@@ -428,6 +551,23 @@ p {
   border-bottom: 1px solid var(--border-subtle);
   color: var(--brand-dark);
   font-weight: 900;
+  animation: hero-rise 640ms var(--ease-out) both;
+}
+
+.proof-strip span:nth-child(1) {
+  animation-delay: 520ms;
+}
+
+.proof-strip span:nth-child(2) {
+  animation-delay: 600ms;
+}
+
+.proof-strip span:nth-child(3) {
+  animation-delay: 680ms;
+}
+
+.proof-strip span:nth-child(4) {
+  animation-delay: 760ms;
 }
 
 
@@ -1251,6 +1391,23 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible,
+  .illustration-shot.reveal,
+  .illustration-shot.reveal.is-visible,
+  .solutions-grid article.reveal,
+  .solutions-grid article.reveal.is-visible,
+  .feature-grid article.reveal,
+  .feature-grid article.reveal.is-visible,
+  .workflow-grid article.reveal,
+  .workflow-grid article.reveal.is-visible,
+  .community-grid article.reveal,
+  .community-grid article.reveal.is-visible {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+
   *,
   *::before,
   *::after {
