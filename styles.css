@@ -223,6 +223,10 @@ p {
 }
 
 .theme-toggle {
+  all: unset;
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
   position: relative;
   display: inline-grid;
   flex: 0 0 auto;
@@ -231,12 +235,12 @@ p {
   place-items: center;
   border: 0;
   border-radius: 999px;
-  background: transparent;
+  background: transparent !important;
+  box-shadow: none;
   color: var(--brand);
   cursor: pointer;
+  padding: 0;
   transition:
-    background-color 180ms ease,
-    border-color 180ms ease,
     color 180ms ease,
     transform 180ms ease;
 }
@@ -248,30 +252,41 @@ p {
 
 .theme-icon {
   position: absolute;
-  font-size: 1.05rem;
-  font-weight: 900;
+  width: 18px;
+  height: 18px;
   line-height: 1;
   transition:
     opacity 160ms ease,
     transform 160ms ease;
 }
 
+.theme-icon svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.2;
+}
+
 .theme-icon.moon {
+  display: none;
   opacity: 0;
   transform: scale(0.7) rotate(-18deg);
-  visibility: hidden;
 }
 
 :root[data-theme="dark"] .theme-icon.sun {
+  display: none;
   opacity: 0;
   transform: scale(0.7) rotate(18deg);
-  visibility: hidden;
 }
 
 :root[data-theme="dark"] .theme-icon.moon {
+  display: block;
   opacity: 1;
   transform: scale(1) rotate(0);
-  visibility: visible;
 }
 
 .button {
@@ -1024,8 +1039,8 @@ button {
 
 .site-footer {
   display: grid;
-  grid-template-columns: minmax(260px, 0.9fr) minmax(520px, 1.1fr);
-  gap: 24px;
+  grid-template-columns: minmax(260px, 1fr) minmax(360px, 1.2fr) minmax(280px, 1fr);
+  gap: clamp(28px, 6vw, 96px);
   align-items: center;
   width: 100%;
   margin: 0 auto;
@@ -1049,15 +1064,24 @@ button {
 }
 
 .footer-links {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
   justify-content: space-between;
-  gap: 12px 18px;
+  align-items: center;
+  gap: 12px 28px;
+  width: 100%;
   font-size: 0.92rem;
   font-weight: 800;
 }
 
-.footer-links span {
+.footer-meta {
+  display: flex;
+  justify-content: flex-end;
+  color: var(--subtle);
+  font-size: 0.92rem;
+}
+
+.footer-meta span {
   color: var(--subtle);
   font-weight: 500;
 }
@@ -1112,6 +1136,10 @@ button {
   }
 
   .footer-links {
+    justify-content: flex-start;
+  }
+
+  .footer-meta {
     justify-content: flex-start;
   }
 }
