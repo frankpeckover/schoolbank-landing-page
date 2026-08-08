@@ -237,7 +237,14 @@ p {
 }
 
 .nav-actions .button.primary {
-  box-shadow: 0 4px 10px rgba(24, 63, 61, 0.1);
+  background: var(--highlight);
+  color: var(--brand-dark);
+  box-shadow: 0 4px 10px rgba(24, 63, 61, 0.08);
+}
+
+.nav-actions .button.primary:hover {
+  background: var(--accent);
+  color: var(--brand-dark);
 }
 
 .hero {
