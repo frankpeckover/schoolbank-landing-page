@@ -1,13 +1,14 @@
-# MeritBank Landing Page
+# Myntix Landing Page
 
-A small static landing/info page for the MeritBank school wallet and reward economy app.
+A small static landing/info page for the Myntix school rewards app.
 
 ## Files
 
 - `index.html` contains the page content and structure.
 - `styles.css` contains all visual styling and responsive layout rules.
 - `assets/illustration-hero.png`, `assets/illustration-shop.png`, and `assets/illustration-leadership.png` are marketing illustrations used by the page.
-- `assets/meritbank-logo.svg` is copied from the app and used in the header and footer.
+- `assets/myntix-mark.png` is used in the header and footer.
+- `assets/myntix-logo-full.png` and `assets/myntix-wordmark.png` are available brand assets.
 
 ## Replacing Illustrations
 
