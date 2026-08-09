@@ -286,7 +286,15 @@ p {
 }
 
 .hero-actions .button.primary {
+  background: var(--highlight);
+  color: var(--brand-dark);
+  box-shadow: 0 6px 14px rgba(24, 63, 61, 0.1);
   animation: glow-pulse 4.8s ease-in-out 1.2s infinite;
+}
+
+.hero-actions .button.primary:hover {
+  background: var(--accent);
+  color: var(--brand-dark);
 }
 
 .button.secondary,
