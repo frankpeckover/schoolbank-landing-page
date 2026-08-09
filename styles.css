@@ -1,3 +1,48 @@
+@font-face {
+  font-display: swap;
+  font-family: "App Numerals";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdSnn-K.ttf") format("truetype");
+  unicode-range: U+0024-0025, U+002B, U+002C, U+002D, U+002E, U+0030-003A;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "App Numerals";
+  font-style: normal;
+  font-weight: 500;
+  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdgnn-K.ttf") format("truetype");
+  unicode-range: U+0024-0025, U+002B, U+002C, U+002D, U+002E, U+0030-003A;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "App Numerals";
+  font-style: normal;
+  font-weight: 600;
+  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSeMmX-K.ttf") format("truetype");
+  unicode-range: U+0024-0025, U+002B, U+002C, U+002D, U+002E, U+0030-003A;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "App Numerals";
+  font-style: normal;
+  font-weight: 700;
+  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSe1mX-K.ttf") format("truetype");
+  unicode-range: U+0024-0025, U+002B, U+002C, U+002D, U+002E, U+0030-003A;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "App Numerals";
+  font-style: normal;
+  font-weight: 800;
+  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSfSmX-K.ttf") format("truetype");
+  unicode-range: U+0024-0025, U+002B, U+002C, U+002D, U+002E, U+0030-003A;
+}
+
 :root {
   color-scheme: light;
   --page-background: rgba(255, 255, 255, 0);
@@ -27,6 +72,9 @@
   --header-wide: 1280px;
   --header-offset: 79px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --font-numeric: "App Numerals", Sora, Manrope, "Segoe UI", Arial, Helvetica, sans-serif;
+  --font-sans: var(--font-numeric);
+  --font-heading: Sora, Manrope, "Segoe UI", Arial, Helvetica, sans-serif;
 }
 
 
@@ -45,8 +93,8 @@ body {
   padding-top: var(--header-offset);
   background-color: var(--page-background);
   color: var(--foreground);
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-sans);
+  font-weight: 400;
   line-height: 1.5;
   overflow-x: hidden;
 }
@@ -207,6 +255,12 @@ p {
   overflow-wrap: normal;
   word-break: normal;
   hyphens: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
 }
 
 h1 {
