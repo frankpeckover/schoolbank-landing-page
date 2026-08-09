@@ -305,7 +305,7 @@ p {
   gap: 18px;
   color: var(--muted);
   font-size: 0.9rem;
-  font-weight: 750;
+  font-weight: 650;
 }
 
 .nav-actions {
@@ -326,7 +326,7 @@ p {
   border-radius: 8px;
   padding: 10px 16px;
   border: 1px solid transparent;
-  font-weight: 850;
+  font-weight: 780;
   white-space: nowrap;
   transition:
     background-color 180ms ease,
