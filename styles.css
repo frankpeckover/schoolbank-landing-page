@@ -266,7 +266,7 @@ h3 {
 h1 {
   max-width: 680px;
   margin-bottom: 24px;
-  font-size: clamp(3.2rem, 5.5vw, 5.9rem);
+  font-size: clamp(3rem, 5.1vw, 5.45rem);
   line-height: 0.94;
   letter-spacing: 0;
 }
