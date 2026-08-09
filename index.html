@@ -92,7 +92,7 @@
         <nav class="site-nav" aria-label="Primary navigation">
           <a href="#why">Why Myntix?</a>
           <a href="#solutions">Platform</a>
-          <a href="#features">Daily use</a>
+          <a href="#features">How it works</a>
           <a href="#workflow">Rollout</a>
           <a href="#security">Security</a>
           <a href="#contact">Contact</a>
@@ -220,45 +220,41 @@
       <section class="feature-section" id="features">
         <div class="section-heading feature-heading">
           <div>
-            <p class="eyebrow">What Myntix handles day to day</p>
-            <h2>Built around the work schools already do</h2>
+            <p class="eyebrow">How Myntix works</p>
+            <h2>One simple loop from recognition to reward</h2>
           </div>
           <p>
-            The app is not trying to be a bank. It gives behaviour teams the practical pieces they
-            need to run a clear reward economy at school.
+            Staff keep the program moving in the moment, while students can see what they have
+            earned and what they are working toward.
           </p>
         </div>
-        <div class="feature-grid">
-          <article>
-            <span class="feature-icon">+/-</span>
-            <h3>Credits and deductions</h3>
-            <p>Recognise positive behaviour or record a deduction from the same simple workflow.</p>
-          </article>
-          <article>
-            <span class="feature-icon">GRP</span>
-            <h3>Student groups</h3>
-            <p>Support classes, houses, year levels, programs, or any group your school already uses.</p>
-          </article>
-          <article>
-            <span class="feature-icon">GOAL</span>
-            <h3>Wallets and goals</h3>
-            <p>Students can see their balance, recent activity, progress charts, goals, and requests.</p>
-          </article>
-          <article>
-            <span class="feature-icon">SHOP</span>
-            <h3>Reward requests</h3>
-            <p>Staff define rewards and manage pending, approved, denied, fulfilled, and voided requests.</p>
-          </article>
-          <article>
-            <span class="feature-icon">LOG</span>
-            <h3>Transaction records</h3>
-            <p>Keep a searchable trail of balance changes, reward holds, redemptions, and refunds.</p>
-          </article>
-          <article>
-            <span class="feature-icon">REP</span>
-            <h3>Program visibility</h3>
-            <p>Track activity, participation, balances, and reward demand without spreadsheet cleanup.</p>
-          </article>
+        <div class="journey-panel" aria-label="How Myntix works from recognition to reward">
+          <div class="journey-line" aria-hidden="true"></div>
+          <div class="journey-step">
+            <span class="journey-icon">+</span>
+            <h3>Recognise</h3>
+            <p>Staff award credits when positive behaviour happens.</p>
+          </div>
+          <div class="journey-step">
+            <span class="journey-icon">GRP</span>
+            <h3>Share</h3>
+            <p>Credits can go to one student, selected students, or a group.</p>
+          </div>
+          <div class="journey-step featured">
+            <span class="journey-icon">MY</span>
+            <h3>Track</h3>
+            <p>Students see balances, progress, goals, and recent activity.</p>
+          </div>
+          <div class="journey-step">
+            <span class="journey-icon">SHOP</span>
+            <h3>Request</h3>
+            <p>Students choose from rewards defined by the school.</p>
+          </div>
+          <div class="journey-step">
+            <span class="journey-icon">OK</span>
+            <h3>Fulfil</h3>
+            <p>Staff approve, fulfil, refund, or review requests with history intact.</p>
+          </div>
         </div>
       </section>
 
@@ -413,7 +409,7 @@
       (function () {
         var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         var revealItems = document.querySelectorAll(
-          ".community-grid article, .section-copy, .illustration-shot, .solutions-grid article, .feature-grid article, .workflow-grid article, .security-section > div, .security-grid span, .walkthrough-form"
+          ".community-grid article, .section-copy, .illustration-shot, .solutions-grid article, .journey-step, .workflow-grid article, .security-section > div, .security-grid span, .walkthrough-form"
         );
 
         revealItems.forEach(function (item, index) {
