@@ -938,6 +938,7 @@ button {
 
 .journey-panel {
   position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 18px;
@@ -959,9 +960,10 @@ button {
   top: clamp(68px, 7vw, 86px);
   right: clamp(58px, 6vw, 82px);
   left: clamp(58px, 6vw, 82px);
+  z-index: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--highlight), var(--accent), var(--brand-dark));
-  opacity: 0.28;
+  background: linear-gradient(90deg, var(--highlight), var(--accent), var(--highlight));
+  opacity: 0.2;
 }
 
 .journey-step {
@@ -996,9 +998,9 @@ button {
   border: 1px solid var(--icon-border, rgba(24, 63, 61, 0.12));
   border-radius: 50%;
   background:
-    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.72), transparent 34%),
-    var(--icon-bg, var(--surface));
-  color: var(--icon-color, var(--brand-dark));
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.92), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(232, 245, 239, 0.92));
+  color: var(--accent);
   font-size: 0.88rem;
   font-weight: 950;
   box-shadow: 0 16px 34px rgba(24, 63, 61, 0.1);
@@ -1012,9 +1014,12 @@ button {
   width: 92px;
   height: 92px;
   margin-bottom: 18px;
-  background: var(--brand-dark);
-  color: var(--highlight);
-  box-shadow: 0 22px 48px rgba(24, 63, 61, 0.18);
+  border-color: rgba(112, 184, 149, 0.38);
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.94), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(232, 245, 239, 0.94));
+  color: var(--accent);
+  box-shadow: 0 22px 48px rgba(24, 63, 61, 0.12);
 }
 
 .journey-step:hover .journey-icon {
