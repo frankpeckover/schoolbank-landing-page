@@ -140,6 +140,65 @@ img {
   max-width: 100%;
 }
 
+.icon-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.icon-mark svg,
+.solution-icon svg,
+.journey-icon svg,
+.workflow-grid span svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.icon-mark svg {
+  width: 26px;
+  height: 26px;
+}
+
+.journey-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.journey-step.featured .journey-icon svg {
+  width: 34px;
+  height: 34px;
+}
+
+.accent-mint {
+  --icon-bg: rgba(122, 228, 183, 0.22);
+  --icon-border: rgba(122, 228, 183, 0.42);
+  --icon-color: #4fd7a2;
+}
+
+.accent-sage {
+  --icon-bg: rgba(112, 184, 149, 0.18);
+  --icon-border: rgba(112, 184, 149, 0.34);
+  --icon-color: var(--accent);
+}
+
+.accent-deep {
+  --icon-bg: rgba(24, 63, 61, 0.12);
+  --icon-border: rgba(24, 63, 61, 0.24);
+  --icon-color: var(--brand-dark);
+}
+
+.accent-gold {
+  --icon-bg: rgba(236, 190, 94, 0.2);
+  --icon-border: rgba(236, 190, 94, 0.42);
+  --icon-color: #b77b18;
+}
+
 h1,
 h2,
 h3,
@@ -675,14 +734,18 @@ p {
   height: 48px;
   place-items: center;
   border-radius: 8px;
+  border: 1px solid var(--icon-border, rgba(255, 255, 255, 0.22));
+  background: var(--icon-bg, transparent);
+  color: var(--icon-color, var(--highlight));
   font-weight: 900;
 }
 
 .icon-mark {
   margin-bottom: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  color: var(--highlight);
-  font-size: 1.35rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent),
+    var(--icon-bg, transparent);
+  color: var(--icon-color, var(--highlight));
 }
 
 .split-section {
@@ -848,8 +911,8 @@ button {
   width: 54px;
   height: 54px;
   margin-bottom: 44px;
-  background: var(--brand-soft);
-  color: var(--brand-dark);
+  background: var(--icon-bg, var(--brand-soft));
+  color: var(--icon-color, var(--brand-dark));
 }
 
 .solutions-grid p,
@@ -930,10 +993,12 @@ button {
   height: 76px;
   place-items: center;
   margin-bottom: 24px;
-  border: 1px solid rgba(24, 63, 61, 0.12);
+  border: 1px solid var(--icon-border, rgba(24, 63, 61, 0.12));
   border-radius: 50%;
-  background: var(--surface);
-  color: var(--brand-dark);
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.72), transparent 34%),
+    var(--icon-bg, var(--surface));
+  color: var(--icon-color, var(--brand-dark));
   font-size: 0.88rem;
   font-weight: 950;
   box-shadow: 0 16px 34px rgba(24, 63, 61, 0.1);
@@ -991,8 +1056,8 @@ button {
 
 .workflow-grid span {
   margin-bottom: 40px;
-  background: var(--accent-soft);
-  color: var(--accent);
+  background: var(--icon-bg, var(--accent-soft));
+  color: var(--icon-color, var(--accent));
 }
 
 .security-section {
