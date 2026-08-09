@@ -158,16 +158,6 @@ body {
   }
 }
 
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-
-  100% {
-    transform: translateX(100%);
-  }
-}
-
 @keyframes glow-pulse {
   0%,
   100% {
@@ -578,18 +568,6 @@ p {
     rgba(220, 235, 231, 0.72);
   box-shadow: 0 30px 80px rgba(23, 32, 28, 0.12);
 }
-
-.hero-art::after {
-  position: absolute;
-  inset: 28px 10px 72px 84px;
-  content: "";
-  border-radius: 8px;
-  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.34), transparent);
-  opacity: 0.72;
-  animation: shimmer 8s ease-in-out infinite;
-  pointer-events: none;
-}
-
 
 .hero-art img {
   position: absolute;
@@ -1650,10 +1628,6 @@ button {
 
   .hero-art::before {
     inset: 18px 0 64px;
-  }
-
-  .hero-art::after {
-    display: none;
   }
 
   .hero-art img {
