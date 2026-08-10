@@ -72,9 +72,9 @@
   --header-wide: 1280px;
   --header-offset: 79px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --font-numeric: "App Numerals", Sora, Manrope, "Segoe UI", Arial, Helvetica, sans-serif;
-  --font-sans: var(--font-numeric);
-  --font-heading: Sora, Manrope, "Segoe UI", Arial, Helvetica, sans-serif;
+  --font-numeric: Lato, "Segoe UI", Arial, Helvetica, sans-serif;
+  --font-sans: Lato, "Segoe UI", Arial, Helvetica, sans-serif;
+  --font-heading: Lato, "Segoe UI", Arial, Helvetica, sans-serif;
 }
 
 
