@@ -1,48 +1,3 @@
-@font-face {
-  font-display: swap;
-  font-family: "App Numerals";
-  font-style: normal;
-  font-weight: 400;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdSnn-K.ttf") format("truetype");
-  unicode-range: U+0024-0025, U+002B, U+002C, U+002D, U+002E, U+0030-003A;
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "App Numerals";
-  font-style: normal;
-  font-weight: 500;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSdgnn-K.ttf") format("truetype");
-  unicode-range: U+0024-0025, U+002B, U+002C, U+002D, U+002E, U+0030-003A;
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "App Numerals";
-  font-style: normal;
-  font-weight: 600;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSeMmX-K.ttf") format("truetype");
-  unicode-range: U+0024-0025, U+002B, U+002C, U+002D, U+002E, U+0030-003A;
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "App Numerals";
-  font-style: normal;
-  font-weight: 700;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSe1mX-K.ttf") format("truetype");
-  unicode-range: U+0024-0025, U+002B, U+002C, U+002D, U+002E, U+0030-003A;
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "App Numerals";
-  font-style: normal;
-  font-weight: 800;
-  src: url("https://fonts.gstatic.com/s/sora/v17/xMQOuFFYT72X5wkB_18qmnndmSfSmX-K.ttf") format("truetype");
-  unicode-range: U+0024-0025, U+002B, U+002C, U+002D, U+002E, U+0030-003A;
-}
-
 :root {
   color-scheme: light;
   --page-background: rgba(255, 255, 255, 0);
@@ -176,6 +131,29 @@ a {
 
 img {
   max-width: 100%;
+}
+
+.hero-art picture,
+.illustration-shot picture {
+  display: contents;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--brand-dark);
+  color: white;
+  font-weight: 700;
+  transform: translateY(-160%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
 
 .icon-sprite {
@@ -1739,5 +1717,60 @@ button {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 1ms !important;
+  }
+}
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #000 !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    padding-top: 0;
+    font-size: 11pt;
+  }
+
+  .site-header,
+  .site-footer,
+  .hero-art,
+  .illustration-shot,
+  .proof-strip,
+  .button,
+  .walkthrough-form,
+  .icon-sprite,
+  .skip-link {
+    display: none !important;
+  }
+
+  main,
+  .hero,
+  .community-band,
+  .split-section,
+  .feature-section,
+  .workflow-section,
+  .security-section,
+  .cta-section,
+  .legal-main {
+    display: block;
+    width: auto;
+    max-width: none;
+    min-height: 0;
+    padding: 0;
+    margin: 0 0 24pt;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  a {
+    text-decoration: underline;
   }
 }
