@@ -1005,10 +1005,15 @@ button {
 
 .visual-progress span {
   display: block;
-  width: 72%;
+  width: 0;
   height: 100%;
   border-radius: inherit;
   background: var(--highlight);
+  transition: width 1.8s var(--ease-out);
+}
+
+.visual-ledger.is-animated .visual-progress span {
+  width: var(--progress-value, 72%);
 }
 
 .visual-ledger small {
