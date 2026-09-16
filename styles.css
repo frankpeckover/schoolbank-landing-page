@@ -142,8 +142,7 @@ img {
 }
 
 .icon-mark svg,
-.solution-icon svg,
-.feature-icon svg {
+.solution-icon svg {
   width: 24px;
   height: 24px;
   stroke: currentColor;
@@ -156,11 +155,6 @@ img {
 .icon-mark svg {
   width: 26px;
   height: 26px;
-}
-
-.feature-icon svg {
-  width: 28px;
-  height: 28px;
 }
 
 .accent-mint {
@@ -525,7 +519,6 @@ p {
 .section-heading,
 .split-section,
 .faq-grid,
-.security-section,
 .cta-section {
   min-width: 0;
   animation: fade-up 780ms var(--ease-out) both;
@@ -663,7 +656,6 @@ p {
 .split-section,
 .feature-section,
 .workflow-section,
-.security-section,
 .cta-section {
   padding: clamp(62px, 8vw, 116px) clamp(20px, 5vw, 72px);
 }
@@ -673,14 +665,6 @@ p {
   color: var(--foreground);
   padding-top: clamp(44px, 6vw, 72px);
   padding-bottom: clamp(44px, 6vw, 72px);
-}
-
-.security-section .eyebrow {
-  color: var(--highlight);
-}
-
-.security-section p {
-  color: rgba(255, 255, 255, 0.72);
 }
 
 .section-heading {
@@ -780,10 +764,6 @@ p {
 
 .split-section.reverse .section-copy {
   order: 2;
-}
-
-.platform-section {
-  background: transparent;
 }
 
 .seamless-section {
@@ -939,20 +919,6 @@ button {
   max-width: 560px;
 }
 
-.feature-icon {
-  display: grid;
-  width: 64px;
-  height: 64px;
-  place-items: center;
-  margin-bottom: 22px;
-  border: 1px solid var(--icon-border, rgba(24, 63, 61, 0.12));
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.92), transparent 34%),
-    var(--icon-bg, var(--brand-soft));
-  color: var(--icon-color, var(--accent));
-}
-
 .feature-copy h3 {
   max-width: 14ch;
   margin-bottom: 18px;
@@ -1073,43 +1039,6 @@ button {
 
 .faq-grid p {
   margin: 0.75rem 0 0;
-}
-
-.security-section {
-  display: grid;
-  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
-  gap: clamp(32px, 5vw, 72px);
-  align-items: center;
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: max(clamp(20px, 5vw, 72px), calc((100vw - var(--page-wide)) / 2 + 20px));
-  padding-left: max(clamp(20px, 5vw, 72px), calc((100vw - var(--page-wide)) / 2 + 20px));
-  background: var(--brand-dark);
-  color: white;
-}
-
-.security-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.security-grid span {
-  min-height: 92px;
-  padding: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  font-weight: 850;
-  transition:
-    background-color 180ms ease,
-    transform 180ms ease;
-}
-
-.security-grid span:hover {
-  background: rgba(255, 255, 255, 0.13);
-  transform: translateY(-3px);
 }
 
 .cta-section {
@@ -1318,8 +1247,7 @@ button {
   .hero,
   .split-section,
   .feature-row,
-  .cta-section,
-  .security-section {
+  .cta-section {
     grid-template-columns: 1fr;
   }
 
@@ -1506,7 +1434,6 @@ button {
   .split-section,
   .feature-section,
   .workflow-section,
-  .security-section,
   .cta-section,
   .site-footer {
     width: auto;
@@ -1543,8 +1470,7 @@ button {
   }
 
   .section-heading > p,
-  .cta-section p,
-  .security-section p {
+  .cta-section p {
     margin-right: auto;
     margin-left: auto;
     text-align: center;
@@ -1598,7 +1524,6 @@ button {
   .community-grid,
   .faq-grid,
   .form-grid,
-  .security-grid,
   .proof-strip {
     grid-template-columns: 1fr;
   }
@@ -1609,24 +1534,15 @@ button {
   }
 
   .feature-copy {
-    grid-template-columns: 64px minmax(0, 1fr);
-    column-gap: 16px;
-    align-items: center;
+    display: block;
     justify-items: start;
     text-align: left;
-  }
-
-  .feature-icon {
-    grid-row: 1 / span 3;
-    width: 64px;
-    height: 64px;
-    margin-bottom: 0;
   }
 
   .feature-copy .eyebrow,
   .feature-copy h3,
   .feature-copy p:not(.eyebrow) {
-    grid-column: 2;
+    grid-column: auto;
   }
 
   .feature-copy .eyebrow {
@@ -1737,7 +1653,6 @@ button {
   .split-section,
   .feature-section,
   .workflow-section,
-  .security-section,
   .cta-section,
   .legal-main {
     display: block;
