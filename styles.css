@@ -906,7 +906,6 @@ button {
   align-items: center;
   min-height: 500px;
   padding: clamp(42px, 6vw, 76px) 0;
-  border-bottom: 1px solid var(--border-subtle);
 }
 
 .feature-row.reverse .feature-copy {
