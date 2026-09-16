@@ -165,8 +165,7 @@ img {
 
 .icon-mark svg,
 .solution-icon svg,
-.journey-icon svg,
-.workflow-grid span svg {
+.journey-icon svg {
   width: 24px;
   height: 24px;
   stroke: currentColor;
@@ -520,16 +519,14 @@ p {
   transform: translateY(0) scale(1);
 }
 
-.solutions-grid article.reveal,
 .journey-step.reveal,
-.workflow-grid article.reveal,
+.faq-grid details.reveal,
 .community-grid article.reveal {
   transform: translateY(30px) scale(0.985);
 }
 
-.solutions-grid article.reveal.is-visible,
 .journey-step.reveal.is-visible,
-.workflow-grid article.reveal.is-visible,
+.faq-grid details.reveal.is-visible,
 .community-grid article.reveal.is-visible {
   transform: translateY(0) scale(1);
 }
@@ -549,8 +546,7 @@ p {
 .hero-copy-block,
 .section-heading,
 .split-section,
-.solutions-grid,
-.workflow-grid,
+.faq-grid,
 .security-section,
 .cta-section {
   min-width: 0;
@@ -578,6 +574,14 @@ p {
 
 .hero-actions {
   animation-delay: 360ms;
+}
+
+.hero-proof {
+  max-width: 32.5rem;
+  margin: 0.875rem 0 0;
+  color: var(--subtle);
+  font-size: 0.96rem;
+  font-weight: 800;
 }
 
 .eyebrow {
@@ -734,7 +738,6 @@ p {
 .community-band,
 .science-section,
 .split-section,
-.solutions-grid,
 .feature-section,
 .workflow-section,
 .security-section,
@@ -844,8 +847,7 @@ p {
 }
 
 .icon-mark,
-.solution-icon,
-.workflow-grid span {
+.solution-icon {
   display: grid;
   width: 48px;
   height: 48px;
@@ -974,67 +976,12 @@ button {
   height: 420px;
 }
 
-.solutions-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-  width: min(100%, var(--page-wide));
-  margin-right: auto;
-  margin-left: auto;
-  padding-top: 0;
-}
-
-.platform-grid {
-  position: relative;
-  z-index: 0;
-  padding-bottom: clamp(72px, 8vw, 122px);
-}
-
-.platform-grid::before {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  z-index: -1;
-  width: 100vw;
-  height: 52%;
-  content: "";
-  background: var(--panel-soft);
-  transform: translateX(-50%);
-}
-
-.solutions-grid article {
-  position: relative;
-  min-height: 276px;
-  padding: 26px;
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  background:
-    linear-gradient(180deg, rgba(var(--surface-rgb), 0.96), rgba(var(--surface-rgb), 0.88)),
-    var(--surface);
-  box-shadow: 0 1px 0 rgba(23, 32, 28, 0.03);
-  transition:
-    border-color 180ms ease,
-    box-shadow 180ms ease,
-    transform 180ms ease;
-}
-
-.solutions-grid article:hover {
-  border-color: rgba(24, 63, 61, 0.28);
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-4px);
-}
-
 .solution-icon {
   width: 54px;
   height: 54px;
   margin-bottom: 44px;
   background: var(--icon-bg, var(--brand-soft));
   color: var(--icon-color, var(--brand-dark));
-}
-
-.solutions-grid p,
-.workflow-grid p {
-  margin-bottom: 0;
 }
 
 .feature-section {
@@ -1159,27 +1106,30 @@ button {
   background: var(--panel-soft);
 }
 
-.workflow-grid {
+.faq-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.875rem;
   width: min(100%, var(--page-wide));
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
 }
 
-.workflow-grid article {
-  min-height: 242px;
-  padding: 26px;
+.faq-grid details {
+  min-height: 8.25rem;
+  padding: 1.375rem;
   border: 1px solid var(--border-subtle);
   border-radius: 8px;
   background: var(--surface);
 }
 
-.workflow-grid span {
-  margin-bottom: 40px;
-  background: var(--icon-bg, var(--accent-soft));
-  color: var(--icon-color, var(--accent));
+.faq-grid summary {
+  cursor: pointer;
+  color: var(--foreground);
+  font-weight: 900;
+}
+
+.faq-grid p {
+  margin: 0.75rem 0 0;
 }
 
 .security-section {
@@ -1447,8 +1397,7 @@ button {
 
   .community-grid,
   .science-grid,
-  .solutions-grid,
-  .workflow-grid,
+  .faq-grid,
   .proof-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1623,7 +1572,6 @@ button {
   .community-band,
   .science-section,
   .split-section,
-  .solutions-grid,
   .feature-section,
   .workflow-section,
   .security-section,
@@ -1669,9 +1617,7 @@ button {
   }
 
   .community-grid article,
-  .science-grid article,
-  .solutions-grid article,
-  .workflow-grid article {
+  .science-grid article {
     display: grid;
     grid-template-columns: 56px minmax(0, 1fr);
     column-gap: 16px;
@@ -1680,8 +1626,7 @@ button {
   }
 
   .icon-mark,
-  .solution-icon,
-  .workflow-grid span {
+  .solution-icon {
     grid-row: 1 / span 2;
     width: 56px;
     height: 56px;
@@ -1689,17 +1634,13 @@ button {
   }
 
   .community-grid h3,
-  .science-grid h3,
-  .solutions-grid h3,
-  .workflow-grid h3 {
+  .science-grid h3 {
     align-self: center;
     margin-bottom: 6px;
   }
 
   .community-grid p,
-  .science-grid p,
-  .solutions-grid p,
-  .workflow-grid p {
+  .science-grid p {
     grid-column: 2;
   }
 
@@ -1736,8 +1677,7 @@ button {
 
   .community-grid,
   .science-grid,
-  .solutions-grid,
-  .workflow-grid,
+  .faq-grid,
   .form-grid,
   .security-grid,
   .proof-strip {
@@ -1800,14 +1740,12 @@ button {
   .reveal.is-visible,
   .illustration-shot.reveal,
   .illustration-shot.reveal.is-visible,
-  .solutions-grid article.reveal,
-  .solutions-grid article.reveal.is-visible,
   .journey-step.reveal,
   .journey-step.reveal.is-visible,
   .journey-step.featured.reveal,
   .journey-step.featured.reveal.is-visible,
-  .workflow-grid article.reveal,
-  .workflow-grid article.reveal.is-visible,
+  .faq-grid details.reveal,
+  .faq-grid details.reveal.is-visible,
   .community-grid article.reveal,
   .community-grid article.reveal.is-visible {
     opacity: 1;
