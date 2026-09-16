@@ -954,6 +954,10 @@ button {
   left: 4%;
 }
 
+.feature-visual.soft::before {
+  display: none;
+}
+
 .feature-visual img {
   position: relative;
   display: block;
