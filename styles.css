@@ -732,6 +732,7 @@ p {
 }
 
 .community-band,
+.science-section,
 .split-section,
 .solutions-grid,
 .feature-section,
@@ -813,6 +814,33 @@ p {
 .community-grid article:hover {
   background: rgba(255, 255, 255, 0.11);
   transform: translateY(-3px);
+}
+
+.science-section {
+  background:
+    linear-gradient(180deg, rgba(var(--surface-rgb), 0.98), rgba(var(--surface-rgb), 0.78)),
+    var(--surface);
+}
+
+.science-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  width: min(100%, var(--page-wide));
+  margin: 0 auto;
+}
+
+.science-grid article {
+  min-height: 244px;
+  padding: 26px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 1px 0 rgba(23, 32, 28, 0.03);
+}
+
+.science-grid p {
+  margin-bottom: 0;
 }
 
 .icon-mark,
@@ -1418,6 +1446,7 @@ button {
   }
 
   .community-grid,
+  .science-grid,
   .solutions-grid,
   .workflow-grid,
   .proof-strip {
@@ -1592,6 +1621,7 @@ button {
   .nav-shell,
   .hero,
   .community-band,
+  .science-section,
   .split-section,
   .solutions-grid,
   .feature-section,
@@ -1639,6 +1669,7 @@ button {
   }
 
   .community-grid article,
+  .science-grid article,
   .solutions-grid article,
   .workflow-grid article {
     display: grid;
@@ -1658,6 +1689,7 @@ button {
   }
 
   .community-grid h3,
+  .science-grid h3,
   .solutions-grid h3,
   .workflow-grid h3 {
     align-self: center;
@@ -1665,6 +1697,7 @@ button {
   }
 
   .community-grid p,
+  .science-grid p,
   .solutions-grid p,
   .workflow-grid p {
     grid-column: 2;
@@ -1702,6 +1735,7 @@ button {
   }
 
   .community-grid,
+  .science-grid,
   .solutions-grid,
   .workflow-grid,
   .form-grid,
@@ -1821,6 +1855,7 @@ button {
   main,
   .hero,
   .community-band,
+  .science-section,
   .split-section,
   .feature-section,
   .workflow-section,
