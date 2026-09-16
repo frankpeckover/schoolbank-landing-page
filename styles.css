@@ -737,7 +737,6 @@ p {
 }
 
 .community-band,
-.science-section,
 .split-section,
 .feature-section,
 .workflow-section,
@@ -818,33 +817,6 @@ p {
 .community-grid article:hover {
   background: rgba(255, 255, 255, 0.11);
   transform: translateY(-3px);
-}
-
-.science-section {
-  background:
-    linear-gradient(180deg, rgba(var(--surface-rgb), 0.98), rgba(var(--surface-rgb), 0.78)),
-    var(--surface);
-}
-
-.science-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  width: min(100%, var(--page-wide));
-  margin: 0 auto;
-}
-
-.science-grid article {
-  min-height: 244px;
-  padding: 26px;
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  background: var(--surface);
-  box-shadow: 0 1px 0 rgba(23, 32, 28, 0.03);
-}
-
-.science-grid p {
-  margin-bottom: 0;
 }
 
 .icon-mark,
@@ -1005,11 +977,9 @@ button {
   position: relative;
   isolation: isolate;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
   grid-template-areas:
-    "recognise arrow1 share"
-    "arrow4 track arrow2"
-    "fulfil arrow3 request";
+    "recognise arrow1 share arrow2 track arrow3 request arrow4 fulfil";
   gap: clamp(14px, 2vw, 22px);
   width: min(100%, var(--page-wide));
   margin: 0 auto;
@@ -1018,20 +988,10 @@ button {
   border: 1px solid rgba(112, 184, 149, 0.22);
   border-radius: 8px;
   background:
-    radial-gradient(circle at 50% 42%, rgba(122, 228, 183, 0.18), transparent 32%),
+    linear-gradient(90deg, rgba(122, 228, 183, 0.14), transparent 26%, transparent 74%, rgba(122, 228, 183, 0.14)),
     linear-gradient(135deg, rgba(232, 245, 239, 0.9), rgba(var(--surface-rgb), 0.94) 48%, rgba(225, 247, 238, 0.82)),
     var(--surface);
   box-shadow: var(--shadow-sm);
-}
-
-.journey-panel::before {
-  position: absolute;
-  z-index: 0;
-  inset: 16%;
-  content: "";
-  border: 3px solid rgba(112, 184, 149, 0.18);
-  border-radius: 50%;
-  pointer-events: none;
 }
 
 .journey-step {
@@ -1040,7 +1000,7 @@ button {
   display: grid;
   align-content: start;
   justify-items: center;
-  min-height: 218px;
+  min-height: 206px;
   padding: 8px 6px 0;
   text-align: center;
 }
@@ -1085,21 +1045,18 @@ button {
 
 .journey-arrow-2 {
   grid-area: arrow2;
-  transform: rotate(90deg);
 }
 
 .journey-arrow-3 {
   grid-area: arrow3;
-  transform: rotate(180deg);
 }
 
 .journey-arrow-4 {
   grid-area: arrow4;
-  transform: rotate(270deg);
 }
 
 .journey-step.featured {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
 }
 
 .journey-step.featured.reveal {
@@ -1107,7 +1064,7 @@ button {
 }
 
 .journey-step.featured.reveal.is-visible {
-  transform: translateY(-8px) scale(1);
+  transform: translateY(-6px) scale(1);
 }
 
 .journey-icon {
@@ -1453,7 +1410,6 @@ button {
   }
 
   .community-grid,
-  .science-grid,
   .faq-grid,
   .proof-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1472,10 +1428,6 @@ button {
       "fulfil";
     grid-template-columns: minmax(0, 1fr);
     max-width: 720px;
-  }
-
-  .journey-panel::before {
-    display: none;
   }
 
   .journey-arrow-2,
@@ -1644,7 +1596,6 @@ button {
   .nav-shell,
   .hero,
   .community-band,
-  .science-section,
   .split-section,
   .feature-section,
   .workflow-section,
@@ -1690,8 +1641,7 @@ button {
     text-align: center;
   }
 
-  .community-grid article,
-  .science-grid article {
+  .community-grid article {
     display: grid;
     grid-template-columns: 56px minmax(0, 1fr);
     column-gap: 16px;
@@ -1707,14 +1657,12 @@ button {
     margin-bottom: 0;
   }
 
-  .community-grid h3,
-  .science-grid h3 {
+  .community-grid h3 {
     align-self: center;
     margin-bottom: 6px;
   }
 
-  .community-grid p,
-  .science-grid p {
+  .community-grid p {
     grid-column: 2;
   }
 
@@ -1750,7 +1698,6 @@ button {
   }
 
   .community-grid,
-  .science-grid,
   .faq-grid,
   .form-grid,
   .security-grid,
@@ -1888,7 +1835,6 @@ button {
   main,
   .hero,
   .community-band,
-  .science-section,
   .split-section,
   .feature-section,
   .workflow-section,
