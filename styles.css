@@ -165,7 +165,8 @@ img {
 
 .icon-mark svg,
 .solution-icon svg,
-.journey-icon svg {
+.journey-icon svg,
+.journey-arrow svg {
   width: 24px;
   height: 24px;
   stroke: currentColor;
@@ -520,13 +521,13 @@ p {
 }
 
 .journey-step.reveal,
-.faq-grid details.reveal,
+.faq-grid article.reveal,
 .community-grid article.reveal {
   transform: translateY(30px) scale(0.985);
 }
 
 .journey-step.reveal.is-visible,
-.faq-grid details.reveal.is-visible,
+.faq-grid article.reveal.is-visible,
 .community-grid article.reveal.is-visible {
   transform: translateY(0) scale(1);
 }
@@ -1004,8 +1005,12 @@ button {
   position: relative;
   isolation: isolate;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-areas:
+    "recognise arrow1 share"
+    "arrow4 track arrow2"
+    "fulfil arrow3 request";
+  gap: clamp(14px, 2vw, 22px);
   width: min(100%, var(--page-wide));
   margin: 0 auto;
   padding: clamp(26px, 4vw, 42px);
@@ -1019,15 +1024,14 @@ button {
   box-shadow: var(--shadow-sm);
 }
 
-.journey-line {
+.journey-panel::before {
   position: absolute;
-  top: clamp(68px, 7vw, 86px);
-  right: clamp(58px, 6vw, 82px);
-  left: clamp(58px, 6vw, 82px);
   z-index: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--highlight), var(--accent), var(--highlight));
-  opacity: 0.2;
+  inset: 16%;
+  content: "";
+  border: 3px solid rgba(112, 184, 149, 0.18);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .journey-step {
@@ -1039,6 +1043,59 @@ button {
   min-height: 218px;
   padding: 8px 6px 0;
   text-align: center;
+}
+
+.journey-step:nth-of-type(1) {
+  grid-area: recognise;
+}
+
+.journey-step:nth-of-type(2) {
+  grid-area: share;
+}
+
+.journey-step:nth-of-type(3) {
+  grid-area: track;
+}
+
+.journey-step:nth-of-type(4) {
+  grid-area: request;
+}
+
+.journey-step:nth-of-type(5) {
+  grid-area: fulfil;
+}
+
+.journey-arrow {
+  z-index: 1;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-self: center;
+  place-items: center;
+  border: 1px solid rgba(112, 184, 149, 0.28);
+  border-radius: 50%;
+  background: rgba(var(--surface-rgb), 0.92);
+  color: var(--accent);
+  box-shadow: 0 12px 28px rgba(24, 63, 61, 0.08);
+}
+
+.journey-arrow-1 {
+  grid-area: arrow1;
+}
+
+.journey-arrow-2 {
+  grid-area: arrow2;
+  transform: rotate(90deg);
+}
+
+.journey-arrow-3 {
+  grid-area: arrow3;
+  transform: rotate(180deg);
+}
+
+.journey-arrow-4 {
+  grid-area: arrow4;
+  transform: rotate(270deg);
 }
 
 .journey-step.featured {
@@ -1114,7 +1171,7 @@ button {
   margin: 0 auto;
 }
 
-.faq-grid details {
+.faq-grid article {
   min-height: 8.25rem;
   padding: 1.375rem;
   border: 1px solid var(--border-subtle);
@@ -1122,8 +1179,8 @@ button {
   background: var(--surface);
 }
 
-.faq-grid summary {
-  cursor: pointer;
+.faq-grid h3 {
+  margin-bottom: 0.75rem;
   color: var(--foreground);
   font-weight: 900;
 }
@@ -1403,11 +1460,28 @@ button {
   }
 
   .journey-panel {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "recognise"
+      "arrow1"
+      "share"
+      "arrow2"
+      "track"
+      "arrow3"
+      "request"
+      "arrow4"
+      "fulfil";
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 720px;
   }
 
-  .journey-line {
+  .journey-panel::before {
     display: none;
+  }
+
+  .journey-arrow-2,
+  .journey-arrow-3,
+  .journey-arrow-4 {
+    transform: rotate(90deg);
   }
 
   .journey-step.featured,
@@ -1685,6 +1759,16 @@ button {
   }
 
   .journey-panel {
+    grid-template-areas:
+      "recognise"
+      "arrow1"
+      "share"
+      "arrow2"
+      "track"
+      "arrow3"
+      "request"
+      "arrow4"
+      "fulfil";
     grid-template-columns: 1fr;
     gap: 20px;
     padding: 24px;
@@ -1698,6 +1782,17 @@ button {
     justify-items: start;
     padding: 0;
     text-align: left;
+  }
+
+  .journey-arrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  .journey-arrow-2,
+  .journey-arrow-3,
+  .journey-arrow-4 {
+    transform: rotate(90deg);
   }
 
   .journey-icon,
@@ -1744,8 +1839,8 @@ button {
   .journey-step.reveal.is-visible,
   .journey-step.featured.reveal,
   .journey-step.featured.reveal.is-visible,
-  .faq-grid details.reveal,
-  .faq-grid details.reveal.is-visible,
+  .faq-grid article.reveal,
+  .faq-grid article.reveal.is-visible,
   .community-grid article.reveal,
   .community-grid article.reveal.is-visible {
     opacity: 1;
