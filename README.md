@@ -5,7 +5,9 @@ A small static landing/info page for the Myntix school rewards app.
 ## Files
 
 - `index.html` contains the page content and structure.
+- `server.js` serves the static files and handles walkthrough form submissions.
 - `styles.css` contains all visual styling and responsive layout rules.
+- `.env.example` documents the required production environment variables.
 - `robots.txt` and `sitemap.xml` provide crawler discovery metadata.
 - `assets/illustration-hero.png`, `assets/illustration-shop.png`, and `assets/illustration-leadership.png` are marketing illustrations used by the page.
 - `assets/myntix-logo-lockup.png` is used in the header and footer.
@@ -28,4 +30,23 @@ No HTML changes are needed if the filenames stay the same.
 
 ## Local Preview
 
-Open `index.html` directly in a browser. No build step is required.
+Install dependencies and run the Node server:
+
+```bash
+npm install
+cp .env.example .env
+npm run dev
+```
+
+Set `RESEND_API_KEY`, `CONTACT_TO`, and `CONTACT_FROM` in `.env` before testing real form submissions. The site runs on `http://127.0.0.1:3001` by default.
+
+## Production
+
+Run the app behind your existing reverse proxy:
+
+```bash
+npm ci --omit=dev
+npm start
+```
+
+Keep `RESEND_API_KEY` in the server environment only. Do not put it in client-side JavaScript or HTML.

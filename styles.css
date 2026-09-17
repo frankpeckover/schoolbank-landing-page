@@ -173,6 +173,52 @@ body {
   }
 }
 
+@keyframes mint-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes mint-plus-pop {
+  0%,
+  100% {
+    opacity: 0.88;
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-18px) scale(1.08);
+  }
+}
+
+@keyframes mint-stack-rise {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes mint-progress-draw {
+  0%,
+  100% {
+    stroke-dasharray: 224 352;
+  }
+
+  50% {
+    stroke-dasharray: 286 352;
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -375,71 +421,6 @@ p {
   transition: color 160ms ease;
 }
 
-.nav-menu {
-  position: relative;
-}
-
-.nav-menu summary {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  min-height: 38px;
-  list-style: none;
-  cursor: pointer;
-}
-
-.nav-menu summary::-webkit-details-marker {
-  display: none;
-}
-
-.nav-menu summary::after {
-  width: 7px;
-  height: 7px;
-  border-right: 1.8px solid currentColor;
-  border-bottom: 1.8px solid currentColor;
-  content: "";
-  transform: translateY(-2px) rotate(45deg);
-  transition: transform 160ms ease;
-}
-
-.nav-menu[open] summary::after {
-  transform: translateY(1px) rotate(225deg);
-}
-
-.nav-menu-panel {
-  position: absolute;
-  top: calc(100% + 16px);
-  right: 0;
-  z-index: 30;
-  display: grid;
-  min-width: 188px;
-  padding: 8px;
-  border: 1px solid rgba(24, 63, 61, 0.16);
-  border-radius: 8px;
-  background: rgba(var(--surface-rgb), 0.98);
-  box-shadow: 0 18px 44px rgba(24, 63, 61, 0.14);
-}
-
-.nav-menu-panel a {
-  min-height: 44px;
-  padding: 10px 12px;
-  border-radius: 7px;
-  color: #33453e;
-  white-space: nowrap;
-}
-
-.nav-menu-panel a:hover,
-.nav-menu-panel a:focus {
-  background: var(--accent-soft);
-  color: var(--brand);
-}
-
-.nav-menu summary:focus-visible,
-.nav-menu-panel a:focus-visible {
-  outline: 3px solid rgba(112, 184, 149, 0.42);
-  outline-offset: 3px;
-}
-
 .nav-actions {
   gap: 10px;
 }
@@ -574,8 +555,8 @@ p {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 0.88fr) minmax(380px, 1fr);
-  gap: clamp(34px, 5vw, 68px);
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+  gap: clamp(28px, 4.5vw, 58px);
   align-items: center;
   width: 100%;
   min-height: calc(100vh - var(--header-offset));
@@ -610,6 +591,13 @@ p {
 
 .hero-copy-block h1 {
   animation-delay: 170ms;
+  max-width: 760px;
+  font-size: clamp(3.15rem, 5.35vw, 5.75rem);
+  line-height: 0.95;
+}
+
+.hero-copy-block h1 .accent-word {
+  color: var(--accent);
 }
 
 .hero-copy {
@@ -638,8 +626,8 @@ p {
 }
 
 .hero-copy {
-  max-width: 540px;
-  font-size: clamp(1.02rem, 1.5vw, 1.18rem);
+  max-width: 620px;
+  font-size: clamp(1.12rem, 1.85vw, 1.34rem);
 }
 
 .hero-actions {
@@ -654,57 +642,46 @@ p {
   animation: hero-scale-in 880ms var(--ease-out) 220ms both;
 }
 
-.hero-art img {
-  position: absolute;
-  top: 58px;
-  right: 18px;
-  z-index: 1;
+.hero-mint-visual {
   display: block;
-  width: min(96%, 700px);
-  height: 410px;
-  object-fit: cover;
-  object-position: center;
-  box-shadow: none;
-  transition:
-    transform 520ms var(--ease-out),
-    filter 520ms var(--ease-out);
-    border-radius: 10%;
+  width: min(100%, 700px);
+  height: auto;
+  margin: 0 0 0 auto;
+  overflow: visible;
 }
 
-.hero-art:hover img {
-  transform: translateY(-5px) scale(1.01);
-  filter: saturate(1.03) contrast(1.02);
+.mint-orbit {
+  fill: none;
+  stroke: rgba(112, 184, 149, 0.22);
+  stroke-width: 2;
 }
 
-.proof-strip {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  padding: 0 clamp(20px, 5vw, 48px);
-  text-align: center;
-  background-color: var(--accent);
+.mint-orbit-small {
+  stroke-dasharray: 10 16;
 }
 
-.proof-strip span {
-  padding: 20px 18px;
-  color: var(--brand-dark);
-  font-weight: 900;
-  animation: hero-rise 640ms var(--ease-out) both;
+.mint-balance-card {
+  transform-origin: 380px 250px;
+  animation: mint-float 7s ease-in-out infinite;
 }
 
-.proof-strip span:nth-child(1) {
-  animation-delay: 520ms;
+.mint-stack {
+  transform-origin: 406px 370px;
+  animation: mint-stack-rise 5.8s ease-in-out infinite;
 }
 
-.proof-strip span:nth-child(2) {
-  animation-delay: 600ms;
+.mint-plus {
+  transform-origin: 192px 314px;
+  animation: mint-plus-pop 3.6s ease-in-out infinite;
 }
 
-.proof-strip span:nth-child(3) {
-  animation-delay: 680ms;
+.mint-token {
+  transform-origin: 572px 122px;
+  animation: mint-float 6.5s ease-in-out 700ms infinite;
 }
 
-.proof-strip span:nth-child(4) {
-  animation-delay: 760ms;
+.mint-progress circle:last-child {
+  animation: mint-progress-draw 5.5s var(--ease-out) infinite;
 }
 
 .community-band,
@@ -934,6 +911,14 @@ p {
 .section-copy p,
 .cta-section p {
   font-size: 1.06rem;
+}
+
+.cta-section .trust-note {
+  max-width: 34rem;
+  margin-top: 18px;
+  color: var(--brand-dark);
+  font-size: 0.96rem;
+  font-weight: 700;
 }
 
 input,
@@ -1399,6 +1384,14 @@ button {
   min-width: 0;
 }
 
+.walkthrough-form .form-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .walkthrough-form label span {
   color: var(--foreground);
   font-size: 0.88rem;
@@ -1583,8 +1576,7 @@ button {
   }
 
   .community-grid,
-  .faq-grid,
-  .proof-strip {
+  .faq-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1693,6 +1685,11 @@ button {
     text-align: center;
   }
 
+  .hero-copy-block h1 {
+    max-width: 11ch;
+    font-size: clamp(2.65rem, 12vw, 3.35rem);
+  }
+
   .eyebrow {
     max-width: 32ch;
     margin-right: auto;
@@ -1768,7 +1765,7 @@ button {
   }
 
   .hero-copy {
-    font-size: 1rem;
+    font-size: 1.04rem;
     margin-right: auto;
     margin-left: auto;
     text-align: center;
@@ -1853,21 +1850,14 @@ button {
     padding-bottom: 0;
   }
 
-  .hero-art img {
-    position: relative;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    top: auto;
-    width: 100%;
-    height: 300px;
-    object-position: 68% center;
+  .hero-mint-visual {
+    width: min(100%, 520px);
+    margin: 0 auto;
   }
 
   .community-grid,
   .faq-grid,
-  .form-grid,
-  .proof-strip {
+  .form-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1937,10 +1927,6 @@ button {
     margin-top: 10px;
   }
 
-  .proof-strip span + span {
-    border-left: 0;
-  }
-
   .community-grid article + article {
     border-top: 1px solid var(--border-subtle);
     border-left: 0;
@@ -2002,7 +1988,6 @@ button {
   .site-footer,
   .hero-art,
   .illustration-shot,
-  .proof-strip,
   .button,
   .walkthrough-form,
   .icon-sprite,
