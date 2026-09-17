@@ -3,6 +3,7 @@ import 'dotenv/config';
 import express from 'express';
 import rateLimit from 'express-rate-limit';
 import { Resend } from 'resend';
+import fs from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
@@ -32,12 +33,33 @@ app.use((req, res, next) => {
 
   return next();
 });
+
+app.get(['/', '/index.html'], (req, res) => {
+  return serveHtml(res, 'index.html');
+});
+
+app.get('/:page.html', (req, res, next) => {
+  const allowedPages = new Set([
+    '404',
+    'data-retention',
+    'privacy',
+    'terms',
+    'thank-you',
+  ]);
+
+  if (!allowedPages.has(req.params.page)) {
+    return next();
+  }
+
+  return serveHtml(res, `${req.params.page}.html`);
+});
+
 app.use(
   express.static(__dirname, {
     extensions: ['html'],
     setHeaders(res, filePath) {
       if (filePath.endsWith('.html')) {
-        res.setHeader('Cache-Control', 'no-store');
+        res.setHeader('Cache-Control', 'no-store, no-transform');
         return;
       }
 
@@ -98,7 +120,8 @@ app.post('/walkthrough-request', walkthroughLimiter, async (req, res) => {
 });
 
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, '404.html'));
+  res.status(404);
+  return serveHtml(res, '404.html');
 });
 
 app.listen(port, () => {
@@ -192,4 +215,34 @@ function escapeHtml(value) {
 function getResend() {
   resend ||= new Resend(process.env.RESEND_API_KEY);
   return resend;
+}
+
+async function serveHtml(res, filename) {
+  const filePath = path.join(__dirname, filename);
+
+  try {
+    const html = await fs.readFile(filePath, 'utf8');
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Cache-Control', 'no-store, no-transform');
+    return res.send(injectCloudflareAnalytics(html));
+  } catch (error) {
+    console.error(`Unable to serve ${filename}:`, error);
+    return res.status(500).send('Internal server error');
+  }
+}
+
+function injectCloudflareAnalytics(html) {
+  const token = clean(process.env.CF_WEB_ANALYTICS_TOKEN);
+
+  if (!token || html.includes('static.cloudflareinsights.com/beacon.min.js')) {
+    return html;
+  }
+
+  const snippet = [
+    '<!-- Cloudflare Web Analytics -->',
+    `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='${JSON.stringify({ token })}'></script>`,
+    '<!-- End Cloudflare Web Analytics -->',
+  ].join('\n');
+
+  return html.replace('</body>', `${snippet}\n  </body>`);
 }

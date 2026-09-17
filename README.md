@@ -40,6 +40,18 @@ npm run dev
 
 Set `RESEND_API_KEY`, `CONTACT_TO`, and `CONTACT_FROM` in `.env` before testing real form submissions. The site runs on `http://127.0.0.1:3001` by default.
 
+## Cloudflare Analytics
+
+The server sends HTML with `Cache-Control: no-store, no-transform` so Cloudflare does not automatically rewrite the page and inject a beacon with a stale integrity hash.
+
+In Cloudflare Web Analytics, set the site to **Enable with JS Snippet installation** and copy the snippet token into:
+
+```bash
+CF_WEB_ANALYTICS_TOKEN=your_cloudflare_beacon_token
+```
+
+Leave `CF_WEB_ANALYTICS_TOKEN` empty locally if you do not want analytics during development.
+
 ## Production
 
 Run the app behind your existing reverse proxy:
