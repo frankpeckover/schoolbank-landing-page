@@ -40,6 +40,23 @@ npm run dev
 
 Set `RESEND_API_KEY`, `CONTACT_TO`, and `CONTACT_FROM` in `.env` before testing real form submissions. The site runs on `http://127.0.0.1:3001` by default.
 
+## App Login Picker
+
+The landing page login button fetches organisations through the landing server:
+
+```txt
+GET /api/public/organisation
+```
+
+The landing server proxies that request to the main app endpoint configured by:
+
+```bash
+MYNTIX_ORGANISATION_DISCOVERY_URL=https://api.myntix.com/api/public/organisation
+MYNTIX_APP_LOGIN_URL=https://app.myntix.com/login
+```
+
+The main app endpoint should return an array, or an object with `organisations`, `organizations`, or `data`. Each organisation should include `name` and either `loginUrl` or `slug`. If only `slug` is returned, the landing server builds a login URL from `MYNTIX_APP_LOGIN_URL`.
+
 ## Cloudflare Analytics
 
 The server sends HTML with `Cache-Control: no-store, no-transform` so Cloudflare does not automatically rewrite the page and inject a beacon with a stale integrity hash.

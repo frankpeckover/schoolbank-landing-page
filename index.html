@@ -219,6 +219,7 @@
           <a href="mailto:support@myntix.com?subject=Myntix%20support%20request">Support</a>
         </nav>
         <div class="nav-actions">
+          <button class="button secondary app-login-trigger" type="button">Go to app</button>
           <a class="button primary" href="#contact">
             <span class="cta-label-full">Book walkthrough</span>
             <span class="cta-label-mobile">Book</span>
@@ -520,6 +521,34 @@
       </section>
     </main>
 
+    <dialog class="login-dialog" id="login-dialog" aria-labelledby="login-dialog-title">
+      <form class="login-dialog-panel" method="dialog">
+        <div class="login-dialog-heading">
+          <div>
+            <p class="eyebrow">Go to app</p>
+            <h2 id="login-dialog-title">Choose your organisation</h2>
+          </div>
+          <button class="login-dialog-close" type="button" data-login-close aria-label="Close login chooser">×</button>
+        </div>
+        <label class="login-search">
+          <span>Organisation</span>
+          <input
+            id="organisation-search"
+            type="search"
+            autocomplete="off"
+            placeholder="Search by school or organisation"
+          >
+        </label>
+        <div class="organisation-list" id="organisation-list" role="listbox" aria-label="Available organisations">
+          <p class="organisation-status" data-login-status>Loading organisations...</p>
+        </div>
+        <p class="login-dialog-help">
+          Can’t find your organisation? Contact
+          <a href="mailto:support@myntix.com?subject=Myntix%20login%20support">support@myntix.com</a>.
+        </p>
+      </form>
+    </dialog>
+
     <footer class="site-footer">
       <div class="footer-brand">
         <img
@@ -546,5 +575,6 @@
       </div>
     </footer>
     <script src="assets/reveal.js" defer></script>
+    <script src="assets/login-picker.js" defer></script>
   </body>
 </html>

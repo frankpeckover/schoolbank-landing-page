@@ -34,6 +34,40 @@ app.use((req, res, next) => {
   return next();
 });
 
+app.get('/api/public/organisation', async (req, res) => {
+  const discoveryUrl =
+    process.env.MYNTIX_ORGANISATION_DISCOVERY_URL ||
+    'https://api.myntix.com/api/public/organisations';
+
+  try {
+    const response = await fetch(discoveryUrl, {
+      headers: {
+        accept: 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      console.error(
+        `Organisation discovery failed with ${response.status} from ${discoveryUrl}`,
+      );
+      return res.status(502).json({
+        error: 'organisation_discovery_unavailable',
+      });
+    }
+
+    const payload = await response.json();
+    const organisations = normaliseOrganisationPayload(payload);
+
+    res.setHeader('Cache-Control', 'no-store');
+    return res.json({ organisations });
+  } catch (error) {
+    console.error('Organisation discovery request failed:', error);
+    return res.status(502).json({
+      error: 'organisation_discovery_unavailable',
+    });
+  }
+});
+
 app.get(['/', '/index.html'], (req, res) => {
   return serveHtml(res, 'index.html');
 });
@@ -105,7 +139,7 @@ app.post('/walkthrough-request', walkthroughLimiter, async (req, res) => {
   try {
     const { error } = await getResend().emails.send({
       from: process.env.CONTACT_FROM || 'Myntix Website <noreply@myntix.com>',
-      to: [process.env.CONTACT_TO || 'hello@myntix.com'],
+      to: [process.env.CONTACT_TO || 'noreply@myntix.com'],
       subject: `New Myntix walkthrough request from ${submission.organisation}`,
       html: renderWalkthroughEmail(submission),
       text: renderWalkthroughText(submission),
@@ -220,6 +254,66 @@ function escapeHtml(value) {
 function getResend() {
   resend ||= new Resend(process.env.RESEND_API_KEY);
   return resend;
+}
+
+function normaliseOrganisationPayload(payload) {
+  const records = Array.isArray(payload)
+    ? payload
+    : Array.isArray(payload?.organisations)
+      ? payload.organisations
+      : Array.isArray(payload?.organizations)
+        ? payload.organizations
+        : Array.isArray(payload?.data)
+          ? payload.data
+          : [];
+
+  return records
+    .map(normaliseOrganisationRecord)
+    .filter(Boolean)
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function normaliseOrganisationRecord(record) {
+  if (!record || typeof record !== 'object') {
+    return null;
+  }
+
+  const name = clean(
+    record.name || record.displayName || record.organisationName || record.organizationName,
+  );
+  const slug = clean(record.slug || record.organisationSlug || record.organizationSlug || record.id);
+  const loginUrl = clean(record.loginUrl || record.login_url || record.url, 800);
+  const fallbackLoginUrl = buildFallbackLoginUrl(slug);
+
+  if (!name || (!loginUrl && !fallbackLoginUrl)) {
+    return null;
+  }
+
+  return {
+    id: clean(record.id || slug || name),
+    loginUrl: loginUrl || fallbackLoginUrl,
+    name,
+    slug,
+  };
+}
+
+function buildFallbackLoginUrl(slug) {
+  const loginBaseUrl = clean(
+    process.env.MYNTIX_APP_LOGIN_URL || 'https://app.myntix.com/login',
+    800,
+  );
+
+  if (!slug || !loginBaseUrl) {
+    return '';
+  }
+
+  try {
+    const loginUrl = new URL(loginBaseUrl);
+    loginUrl.searchParams.set('organisation', slug);
+    return loginUrl.toString();
+  } catch {
+    return '';
+  }
 }
 
 async function serveHtml(res, filename) {
