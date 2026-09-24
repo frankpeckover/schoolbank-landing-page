@@ -8,12 +8,15 @@
   var organisations = [];
   var hasLoaded = false;
   var maxVisibleOrganisations = 5;
+  var scrollPosition = 0;
 
   if (!dialog || !triggers.length || !searchInput || !list) {
     return;
   }
 
   function openDialog() {
+    lockPageScroll();
+
     if (typeof dialog.showModal === "function") {
       dialog.showModal();
     } else {
@@ -27,11 +30,27 @@
   }
 
   function closeDialog() {
+    unlockPageScroll();
+
     if (typeof dialog.close === "function") {
       dialog.close();
     } else {
       dialog.removeAttribute("open");
     }
+  }
+
+  function lockPageScroll() {
+    scrollPosition = window.scrollY || document.documentElement.scrollTop || 0;
+    document.documentElement.classList.add("modal-open");
+    document.body.classList.add("modal-open");
+    document.body.style.top = "-" + scrollPosition + "px";
+  }
+
+  function unlockPageScroll() {
+    document.documentElement.classList.remove("modal-open");
+    document.body.classList.remove("modal-open");
+    document.body.style.top = "";
+    window.scrollTo(0, scrollPosition);
   }
 
   function setStatus(message) {
@@ -113,6 +132,7 @@
 
       button.addEventListener("click", function () {
         if (button.dataset.loginUrl) {
+          unlockPageScroll();
           window.location.href = button.dataset.loginUrl;
         }
       });
@@ -133,6 +153,10 @@
     if (event.target === dialog) {
       closeDialog();
     }
+  });
+
+  dialog.addEventListener("close", function () {
+    unlockPageScroll();
   });
 
   searchInput.addEventListener("input", function () {
